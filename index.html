@@ -13,7 +13,14 @@
 </head>
 
 <body>
-    <div class="loading-mask"></div>
+    <div class="loading-mask d-flex align-items-center justify-content-center">
+        <div class="loading">
+        <div class="loading-bar">
+            <div class="loading-fill"></div>
+        </div>
+        <h5 class="fw-bold">0%</h5>
+    </div>
+    </div>
     <nav class="bg-body-secondary gap-3 d-flex align-items-center">
         <button type="button" class="home-btn bg-dark fw-bold">HOME</button>
         <input type="checkbox" id="menu-switch" hidden>
@@ -66,14 +73,17 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script>
+        // ========================================宣告區========================================
         const leftBtn = document.querySelector('.left-btn');
         const rightBtn = document.querySelector('.right-btn');
         const view = document.querySelector('.menu-view');
         const rooms = document.querySelector('.rooms');
         
+        // ========================================監聽事件區========================================
         rightBtn.addEventListener('click', scrollRight);
         leftBtn.addEventListener('click', scrollLeft);
         
+        // ========================================函式區========================================
         function scrollRight() {
             const allLength = 145.5 * 23 + 8.5;
             const viewLength = view.clientWidth;
@@ -98,6 +108,8 @@
                 rooms.style.left = '-' + (leftMove - (145.5 * 3)) + 'px'
             }
         };
+
+        // ========================================Three.js區========================================
     </script>
 </body>
 
