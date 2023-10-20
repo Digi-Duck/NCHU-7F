@@ -1,0 +1,97 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial, Microsoft JhengHei, PingFang, Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+nav {
+    height: 80px;
+    padding: 0 13%;
+    z-index: 10;
+}
+
+nav button,
+.menu-btn {
+    border: 0;
+    padding: 4px 12px;
+    font-family: Arial;
+    font-size: 26px;
+    color: white;
+    border-radius: 8px;
+}
+
+menu {
+    display: flex;
+    overflow: hidden;
+    color: #696969;
+    padding: 0;
+    width: 0px;
+    transition: 1s;
+}
+
+.menu-btn {
+    background-color: #696969;
+}
+
+#menu-switch:checked+.menu-btn {
+    background-color: rgb(31, 31, 31);
+}
+
+#menu-switch:checked~menu {
+    width: 100%;
+    transition: 1s;
+}
+
+.menu-view {
+    overflow: hidden;
+}
+
+.rooms {
+    height: 60px;
+    position: relative;
+    left: 0px;
+    /* left: -2615px; */
+}
+
+menu i {
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.rooms .room-btn {
+    font-size: 24px;
+    color: #696969;
+}
+
+main {
+    height: 100vh;
+    padding: 80px 13% 0 13%;
+}
+
+.content {
+    padding: 6% 13px 0 13px;
+}
+
+.intro {
+    color: aliceblue;
+}
+
+.intro h3 {
+    font-size: 28px;
+}
+
+.intro-text {
+    text-align: justify;
+    padding: 30px 40px;
+}
+
+.map {
+    height: 640px;
+}
