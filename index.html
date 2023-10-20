@@ -72,6 +72,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+        <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+  <script type="importmap">
+    {
+    "imports": {
+        "three": "https://unpkg.com/three@latest/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@latest/examples/jsm/"
+    }
+    }
+</script>
     <script>
         // ========================================宣告區========================================
         const leftBtn = document.querySelector('.left-btn');
@@ -108,9 +120,99 @@
                 rooms.style.left = '-' + (leftMove - (145.5 * 3)) + 'px'
             }
         };
-
+        </script>
+    <script type="module">
         // ========================================Three.js區========================================
-    </script>
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    
+        const map = document.getElementById('map');
+        let labelRenderer;
+        // 新增場景
+        const scene = new THREE.Scene();
+        // 新增攝影機
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // 設置攝影機位置
+        camera.position.set(-0, 8, 8);
+        camera.rotation.set(-0.5, 0, 0)
+    
+        // 新增渲染器
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(1000, 700);
+    
+        // 新增燈光
+        const light = new THREE.AmbientLight(0x404040, 100);
+        scene.add(light);
+    
+        // 新增GLTFLoader
+        const loader = new GLTFLoader();
+        // 匯入物件(路徑, 加載完成後呼叫函數
+        loader.load(
+          './model/.glb',
+          (object) => {
+            let all = object.scene
+            let root = object.scenes[0]
+            const root2 = root.children
+            scene.add(all)
+            // 以下為標籤寫在LOAD裡不然綁不到
+            const earthDiv = document.createElement('div');
+            earthDiv.className = 'label';
+            earthDiv.textContent = '系學會教室';
+            earthDiv.style.backgroundColor = 'transparent';
+    
+            const earthLabel = new CSS2DObject(earthDiv);
+            earthLabel.position.set(0, 0, 0);
+            earthLabel.center.set(0.5, 1, 0);
+            root2[1].add(earthLabel);
+            earthLabel.layers.set(0);
+    
+    
+          })
+        // POS上面有宣告這裡的用途主要為將three.js綁在固定區域 label的為標籤的  
+        pos.appendChild(renderer.domElement);
+        labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(1000, 700);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.pointer = 'none'
+        labelRenderer.domElement.style.top = '0px';
+        pos.appendChild(labelRenderer.domElement);
+        // 設置render loop(animate loop)
+        function animate() {
+          requestAnimationFrame(animate);
+          renderer.render(scene, camera);
+          labelRenderer.render(scene, camera);
+        }
+        // 定位滑鼠位置所需要的宣告
+        const raycaster = new THREE.Raycaster();
+        const pointer = new THREE.Vector2();
+    
+        function onmodelclick(event) {
+    
+          // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+          pointer.x = (event.layerX / 1000) * 2 - 1;
+          pointer.y = - (event.layerY / 700) * 2 + 1;
+          raycaster.setFromCamera(pointer, camera);
+          // 获取raycaster直线和所有模型相交的数组集合
+          var intersects = raycaster.intersectObjects(scene.children);
+    
+          // 點擊到的物件陣列裡是否有系學會教室
+          if (intersects.some(function (obj) {
+            return obj.object.name == '系學會教室'
+          })) {
+            location.href = "/首頁/5.html";
+            // window.scrollTo( 0, 1000 );
+    
+          }
+    
+        }
+        pos.addEventListener('click', onmodelclick);
+        // 新增控制器
+        const controls = new OrbitControls(camera, labelRenderer.domElement);
+    
+        animate();
+      </script>
 </body>
 
 </html>
