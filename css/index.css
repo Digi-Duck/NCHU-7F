@@ -124,17 +124,15 @@ menu {
     transition: 1s;
 }
 
-.home-btn {
-    background-color: #F7F9F9;
-    color: #5A5D60;
-}
-
-.menu-btn {
+.home-btn, .menu-btn {
     background-color: #CACFD2;
+    transition: 1s;
 }
 
 #menu-switch:checked+.menu-btn {
-    background-color: rgb(31, 31, 31);
+    background-color: #F7F9F9;
+    color: #5A5D60;
+    transition: 1s;
 }
 
 #menu-switch:checked~menu {
@@ -144,6 +142,7 @@ menu {
 
 .menu-view {
     overflow: hidden;
+    background-color: #DEEEFF;
 }
 
 .rooms {
@@ -156,11 +155,12 @@ menu {
 menu i {
     font-size: 50px;
     cursor: pointer;
+    color: #CACFD2;
 }
 
 .rooms .room-btn {
     font-size: 24px;
-    color: #696969;
+    background-color: #A9B4C0;
 }
 
 main {
