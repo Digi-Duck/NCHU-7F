@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/room.css">
 </head>
 <nav class="bg-body-secondary gap-3 fixed-top d-flex align-items-center">
-    <button type="button" class="home-btn bg-dark fw-bold">HOME</button>
+    <button type="button" onclick="window.location.href='index.html'" class="home-btn bg-dark fw-bold">HOME</button>
     <input type="checkbox" id="menu-switch" hidden>
     <label for="menu-switch" class="menu-btn fw-bold">MENU</label>
     <menu class="align-items-center">
@@ -32,16 +32,6 @@
                 <button type="button" class="room-btn fw-bold">ROOM711</button>
                 <button type="button" class="room-btn fw-bold">ROOM712</button>
                 <button type="button" class="room-btn fw-bold">ROOM713</button>
-                <button type="button" class="room-btn fw-bold">ROOM714</button>
-                <button type="button" class="room-btn fw-bold">ROOM715</button>
-                <button type="button" class="room-btn fw-bold">ROOM716</button>
-                <button type="button" class="room-btn fw-bold">ROOM717</button>
-                <button type="button" class="room-btn fw-bold">ROOM718</button>
-                <button type="button" class="room-btn fw-bold">ROOM719</button>
-                <button type="button" class="room-btn fw-bold">ROOM720</button>
-                <button type="button" class="room-btn fw-bold">ROOM721</button>
-                <button type="button" class="room-btn fw-bold">ROOM722</button>
-                <button type="button" class="room-btn fw-bold">ROOM723</button>
             </div>
         </div>
         <i class="right-btn bi bi-caret-right-fill"></i>
@@ -108,27 +98,27 @@
         leftBtn.addEventListener('click', scrollLeft);
 
         function scrollRight() {
-            const allLength = 145.5 * 23 + 8.5;
+            const allLength = 148.7 * 13 + 8.5;
             const viewLength = view.clientWidth;
             const leftMove = Math.abs(parseInt(window.getComputedStyle(rooms, null).left));// 取得rooms left的值
             if (allLength < viewLength) return;
-            if (leftMove + viewLength >= allLength) {
+            if (leftMove + viewLength + 148.7 * 3 >= allLength) {
                 // 到底的時候
                 rooms.style.left = '-' + (allLength - viewLength) + 'px';
             } else {
-                rooms.style.left = '-' + (leftMove + (145.5 * 3)) + 'px'
+                rooms.style.left = '-' + (leftMove + (148.7 * 3)) + 'px'
             }
         };
 
         function scrollLeft() {
-            const allLength = 145.5 * 23 + 8.5;
+            const allLength = 148.7 * 13 + 8.5;
             const viewLength = view.clientWidth;
             const leftMove = Math.abs(parseInt(window.getComputedStyle(rooms, null)?.left));// 取得rooms left的值
             if (allLength < viewLength) return;
-            if (leftMove + viewLength - (145.5 * 3) < viewLength) {
+            if (leftMove + viewLength - (148.7 * 3) < viewLength) {
                 rooms.style.left = '0px';
             } else {
-                rooms.style.left = '-' + (leftMove - (145.5 * 3)) + 'px'
+                rooms.style.left = '-' + (leftMove - (148.7 * 3)) + 'px'
             }
         };
     </script>
