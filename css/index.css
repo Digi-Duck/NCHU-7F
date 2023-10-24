@@ -136,7 +136,7 @@ menu {
 }
 
 @media (max-width: 990px) {
-   menu {
+    menu {
         width: 100%;
         height: 0;
         position: absolute;
@@ -157,17 +157,21 @@ menu {
     transition: 0.8s;
 }
 
-.home-pc, .menu-pc {
+.home-pc,
+.menu-pc {
     display: block;
 }
 
 @media (max-width: 991px) {
-    .home-pc, .menu-pc {
+
+    .home-pc,
+    .menu-pc {
         display: none;
     }
 }
 
-.home-mobile, .menu-mobile {
+.home-mobile,
+.menu-mobile {
     width: 40px;
     height: 40px;
     font-size: 32px;
@@ -176,7 +180,9 @@ menu {
 }
 
 @media (max-width: 990px) {
-    .home-mobile, .menu-mobile {
+
+    .home-mobile,
+    .menu-mobile {
         display: flex;
     }
 }
@@ -244,9 +250,9 @@ main {
     }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 540px) {
     main {
-        padding-top: 150px;
+        padding-top: 130px;
     }
 }
 
@@ -261,11 +267,12 @@ main {
     }
 }
 
-.intro-2{
+.intro-2 {
     margin-top: 10px;
     display: none;
     width: 393px;
 }
+
 .intro h3 {
     font-size: 28px;
     background-color: #D9D4CF;
@@ -282,23 +289,30 @@ main {
     position: relative;
 
 }
-@media(max-width:393px){
-    nav{
-        height: 60px;
-    }
-    .intro{
+
+@media(max-width: 816px) {
+    .intro {
         display: none;
     }
-    .intro-2{
-        margin-top: 10px;
+    
+    .intro-2 {
+        margin-top: 30px;
         display: block;
-        width: 393px;
-    }
-    .intro-2 h3 {
-        font-size: 28px;
         background-color: #D9D4CF;
     }
-    #map{
+
+    .intro-2 h3 {
+        font-size: 28px;
+    }
+    
+    #map {
+        width: 100%;
+        height: 450px;
+    }
+}
+
+@media(max-width: 393px) {
+    #map {
         width: 372px;
         height: 320px;
     }
