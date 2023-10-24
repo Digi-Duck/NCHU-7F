@@ -56,6 +56,14 @@
             </dialog>
         </div>
         <div id="map" class="bg-body-secondary col-9 rounded-3 p-0"></div>
+        <div class="intro-2">
+            <h3 class="w-100 py-3 px-1 mb-3 fw-bold text-center rounded-3">綜合大樓-7樓導覽地圖
+                <div class="intro-text">
+                    放可以直十二畫的是因為，怎麼樣政正式，覺得類的家裡結束：不過只有兩，甚麼想像⋯是一個面還有不要來是。
+                </div>
+            </h3>
+        </div>
+            
     </div>
 
     <div class="content row">
@@ -228,12 +236,13 @@
             let scrollingTL = gsap.timeline({
                 scrollTrigger: {
                     trigger: renderer.domElement,
-                    start: "top top",
+                    start: "top-=110px top",
                     end: "+=1000%",
                     pin: pos,
                     scrub: true,
                     onUpdate: function () {
                     }
+                   
                 }
             })
 
@@ -241,6 +250,7 @@
                     time: clip.duration,
                 })
         }
+        
         // 設置render loop(animate loop)
         function animate() {
             requestAnimationFrame(animate);
@@ -252,6 +262,9 @@
             camera.updateProjectionMatrix();
             renderer.setSize(pos.offsetWidth, 650);
             ScrollTrigger.refresh();
+            if (window.maxwidth = 393){
+                renderer.setSize(341, 320);
+            }
         }
         animate();
         window.addEventListener('resize', resize)
