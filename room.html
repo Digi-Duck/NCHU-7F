@@ -13,14 +13,20 @@
 </head>
 <nav>
     <div class=" container-lg px-4 h-100">
-        <div class="gap-3 d-flex align-items-center h-100">
-            <button type="button" class="home-btn fw-bold" onclick="location.href='index.html'">HOME</button>
+        <div class="nav-box m-auto gap-3 d-flex align-items-center h-100">
+            <button type="button" class="home-btn home-mobile justify-content-center align-items-center">
+                <iconify-icon icon="ic:round-home"></iconify-icon>
+            </button>
+            <button type="button" class="home-btn home-pc fw-bold">HOME</button>
             <input type="checkbox" id="menu-switch" hidden>
-            <label for="menu-switch" class="menu-btn fw-bold">MENU</label>
+            <label for="menu-switch" class="menu-btn menu-mobile justify-content-center align-items-center">
+                <iconify-icon icon="ion:menu"></iconify-icon>
+            </label>
+            <label for="menu-switch" class="menu-btn menu-pc fw-bold">MENU</label>
             <menu class="align-items-center">
                 <i class="left-btn bi bi-caret-left-fill"></i>
                 <div class="menu-view rounded-2">
-                    <div class="rooms p-2 d-flex">
+                    <div class="rooms d-flex">
                         <button type="button" class="room-btn fw-bold">ROOM701</button>
                         <button type="button" class="room-btn fw-bold">ROOM702</button>
                         <button type="button" class="room-btn fw-bold">ROOM703</button>
@@ -56,6 +62,14 @@
             </dialog>
         </div>
         <div id="map" class="bg-body-secondary col-9 rounded-3 p-0"></div>
+        <div class="intro-2">
+            <h3 class="w-100 py-3 px-1 mb-3 fw-bold text-center rounded-3">綜合大樓-7樓導覽地圖
+                <div class="intro-text">
+                    放可以直十二畫的是因為，怎麼樣政正式，覺得類的家裡結束：不過只有兩，甚麼想像⋯是一個面還有不要來是。
+                </div>
+            </h3>
+        </div>
+            
     </div>
 
     <div class="content row">
@@ -84,7 +98,7 @@
 </main>
 
 <body>
-
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
@@ -103,11 +117,19 @@
             const viewLength = view.clientWidth;
             const leftMove = Math.abs(parseInt(window.getComputedStyle(rooms, null).left));// 取得rooms left的值
             if (allLength < viewLength) return;
-            if (leftMove + viewLength + 148.7 * 3 >= allLength) {
-                // 到底的時候
-                rooms.style.left = '-' + (allLength - viewLength) + 'px';
+            if (viewLength <= 452) {
+                if (leftMove + viewLength + 104 * 3 >= 1352) {
+                    // 右到底的時候
+                    rooms.style.left = '-' + (1352 - viewLength) + 'px';
+                } else {
+                    rooms.style.left = '-' + (leftMove + (104 * 3)) + 'px'
+                }
             } else {
-                rooms.style.left = '-' + (leftMove + (148.7 * 3)) + 'px'
+                if (leftMove + viewLength + 148.7 * 3 >= allLength) {
+                    rooms.style.left = '-' + (allLength - viewLength) + 'px';
+                } else {
+                    rooms.style.left = '-' + (leftMove + (148.7 * 3)) + 'px'
+                }
             }
         };
 
@@ -116,10 +138,18 @@
             const viewLength = view.clientWidth;
             const leftMove = Math.abs(parseInt(window.getComputedStyle(rooms, null)?.left));// 取得rooms left的值
             if (allLength < viewLength) return;
-            if (leftMove + viewLength - (148.7 * 3) < viewLength) {
-                rooms.style.left = '0px';
+            if (viewLength <= 452) {
+                if (leftMove + viewLength - (104 * 3) < viewLength) {
+                    rooms.style.left = '0px';
+                } else {
+                    rooms.style.left = '-' + (leftMove - (104 * 3)) + 'px'
+                }
             } else {
-                rooms.style.left = '-' + (leftMove - (148.7 * 3)) + 'px'
+                if (leftMove + viewLength - (148.7 * 3) < viewLength) {
+                    rooms.style.left = '0px';
+                } else {
+                    rooms.style.left = '-' + (leftMove - (148.7 * 3)) + 'px'
+                }
             }
         };
 
@@ -228,12 +258,13 @@
             let scrollingTL = gsap.timeline({
                 scrollTrigger: {
                     trigger: renderer.domElement,
-                    start: "top top",
+                    start: "top-=110px top",
                     end: "+=1000%",
                     pin: pos,
                     scrub: true,
                     onUpdate: function () {
                     }
+                   
                 }
             })
 
@@ -241,6 +272,7 @@
                     time: clip.duration,
                 })
         }
+        
         // 設置render loop(animate loop)
         function animate() {
             requestAnimationFrame(animate);
@@ -252,6 +284,9 @@
             camera.updateProjectionMatrix();
             renderer.setSize(pos.offsetWidth, 650);
             ScrollTrigger.refresh();
+            if (window.maxwidth = 393){
+                renderer.setSize(341, 320);
+            }
         }
         animate();
         window.addEventListener('resize', resize)
