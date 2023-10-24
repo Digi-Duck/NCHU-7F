@@ -87,7 +87,6 @@
     <div class="content row">
         <div class="intro col-3 h-100 ps-0 pe-3">
             <h3 class="w-100 py-3 px-1 mb-3 fw-bold text-center rounded-3">綜合大樓-7樓導覽地圖</h3>
-
             <div class="intro-text w-100 rounded-3">
                 放可以直十二畫的是因為，怎麼樣政正式，覺得類的家裡結束：不過只有兩，甚麼想像⋯是一個面還有不要來是。
                 中感覺好⋯篇類的想生存失，台灣的是不是要的事情感覺都，這個的做過幾專輯的推何相。樣啊而可器人：今天玩家是想要不該，也有一開不再第一收到？我也不部分我，的味是。個太誇日本我也很，是我，一起加，仔細。每天都。比較，要開我記得我也換個師阿可是，偶日本自己一，有說的身影是人應該不，自己性我今天聖誕節，還是進入。
@@ -152,9 +151,8 @@
                 }
             }
         };
-
-        // ==================== 小地圖 ====================
-        let btn = document.querySelector("#show");
+         // ==================== 小地圖 ====================
+         let btn = document.querySelector("#show");
         let infoModal = document.querySelector("#infoModal");
         let close = document.querySelector("#close");
         btn.addEventListener("click", function () {
@@ -164,6 +162,8 @@
             infoModal.close();
         })
     </script>
+       
+    
     <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -279,6 +279,9 @@
             const delta = clock.getDelta()
             if (mixer) mixer.update(delta);
             if (camera) renderer.render(scene, camera);
+            if (window.maxwidth = 393){
+                renderer.setSize(341, 320);
+            }
         }
         function resize() {
             camera.updateProjectionMatrix();
