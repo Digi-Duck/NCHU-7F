@@ -229,6 +229,7 @@ dialog::backdrop {
     display: none;
     }
     .intro-2{
+        margin-top: 10px;
             display: block;
             width: 100%;
     }
@@ -246,5 +247,8 @@ dialog::backdrop {
     }
     .content{
         width: 372px;
+    }
+    .row{
+        display: block;
     }
 }
