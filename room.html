@@ -141,7 +141,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 
     <!-- <version>須改為版本，可用latest找最新版 -->
-    <!-- <script type="importmap">
+    <script type="importmap">
             {
             "imports": {
                 "three": "https://unpkg.com/three@latest/build/three.module.js",
@@ -154,28 +154,27 @@
         import * as THREE from 'three';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-        // import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
         // 新增場景
         const scene = new THREE.Scene();
         // 新增攝影機
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        // 設置攝影機位置
-        camera.position.set(0, 8, 10);
-        camera.rotation.set(-0.5, 0, 0)
-
+        let camera;
+        // const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // // 設置攝影機位置
+        // camera.position.set(0, 8, 10);
+        // camera.rotation.set(-0.5, 0, 0)
+        // 將<canvas>加入HTML(map)
+        const pos = document.getElementById('map');
         // 新增渲染器
         const renderer = new THREE.WebGLRenderer({
             alpha: true
         });
-        renderer.setSize(1000, 1000);
+        renderer.setSize(pos.offsetWidth, 650);
 
-        // 將<canvas>加入HTML(container)
-        const pos = document.getElementById('map');
-        // const pos_2 = document.getElementById('map-2');
-        // const pos_3 = document.getElementById('map-3');
+
+
         pos.appendChild(renderer.domElement);
-        // pos_2.appendChild(renderer.domElement);
-        // pos_3.appendChild(renderer.domElement);
+
 
 
         // 設背景顏色
@@ -189,30 +188,28 @@
         let mixer;
         // 匯入fbx(路徑, 加載完成後呼叫函數, 載入中呼叫函數, 讀取錯誤時呼叫函數)
         loader.load(
-            './model/房間測試.glb',
+            '2.glb',
             (object) => {
                 let all = object.scene
                 let root = object.scenes[0]
                 let root2 = root.children
                 scene.add(all)
+                camera = object.cameras[0];
+
                 // clip這邊的才是控制物體動畫的關鍵
-                const clip = object.animations[2];
+                const clip = object.animations[0];
 
                 // 這個mixer是要找到這個檔案的全部物體
                 let mixer = new THREE.AnimationMixer(all);
                 //把CLIP變成能用action操作
-
                 const action = mixer.clipAction(clip);
                 createAnimation(mixer, action, clip);
 
                 // 啟動特定的action
-
                 action.play();
-                console.log(object.animations);
 
             },
         );
-
 
         const clock = new THREE.Clock();
 
@@ -232,7 +229,8 @@
                 scrollTrigger: {
                     trigger: renderer.domElement,
                     start: "top top",
-                    end: "+=100%",
+                    end: "+=1000%",
+                    pin: pos,
                     scrub: true,
                     onUpdate: function () {
                     }
@@ -243,25 +241,20 @@
                     time: clip.duration,
                 })
         }
-
-
-        // gsap.timeline({
-        //     scrollTrigger: {
-        //         trgger: container,
-        //         start: 0,
-        //         end: "+=" + window.innerHeight * 3,
-        //         scrub: 1,
-        //     }
-        // });
-
         // 設置render loop(animate loop)
         function animate() {
             requestAnimationFrame(animate);
             const delta = clock.getDelta()
             if (mixer) mixer.update(delta);
-            renderer.render(scene, camera);
+            if (camera) renderer.render(scene, camera);
+        }
+        function resize() {
+            camera.updateProjectionMatrix();
+            renderer.setSize(pos.offsetWidth, 650);
+            ScrollTrigger.refresh();
         }
         animate();
+        window.addEventListener('resize', resize)
     </script>
     <script type="module">
         import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
@@ -357,7 +350,7 @@
         const controls = new OrbitControls(camera2, labelRenderer.domElement);
 
         animate2();
-    </script> -->
+    </script>
 </body>
 
 </html>
