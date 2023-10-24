@@ -272,6 +272,7 @@
                     time: clip.duration,
                 })
         }
+       
         
         // 設置render loop(animate loop)
         function animate() {
@@ -279,17 +280,12 @@
             const delta = clock.getDelta()
             if (mixer) mixer.update(delta);
             if (camera) renderer.render(scene, camera);
-            if (window.maxwidth = 393){
-                renderer.setSize(341, 320);
-            }
         }
         function resize() {
             camera.updateProjectionMatrix();
             renderer.setSize(pos.offsetWidth, 650);
             ScrollTrigger.refresh();
-            if (window.maxwidth = 393){
-                renderer.setSize(341, 320);
-            }
+            
         }
         animate();
         window.addEventListener('resize', resize)
