@@ -16,7 +16,7 @@ nav {
     height: 80px;
     z-index: 10;
     position: fixed;
-    background-color: #A9B4C0;
+    background-color: #F0E5DE;
 }
 
 nav button,
@@ -37,14 +37,17 @@ menu {
     transition: 1s;
 }
 
-.home-btn, .menu-btn {
-    background-color: #CACFD2;
+.home-btn {
+    background-color: #ABD0CE;
+}
+
+.menu-btn {
+    background-color: #7C7877;
     transition: 1s;
 }
 
 #menu-switch:checked+.menu-btn {
-    background-color: #F7F9F9;
-    color: #5A5D60;
+    background-color: #ABD0CE;
     transition: 1s;
 }
 
@@ -55,7 +58,7 @@ menu {
 
 .menu-view {
     overflow: hidden;
-    background-color: #DEEEFF;
+    background-color: #C9BDB6;
 }
 
 .rooms {
@@ -68,12 +71,13 @@ menu {
 menu i {
     font-size: 50px;
     cursor: pointer;
-    color: #CACFD2;
+    color: #7C7877;
 }
 
 .rooms .room-btn {
     font-size: 24px;
-    background-color: #A9B4C0;
+    background-color: #FFFFFF;
+    color: #7C7877;
 }
 
 main {
@@ -95,13 +99,13 @@ main {
 
 .intro h3 {
     font-size: 28px;
-    background-color: #95ACB9;
+    background-color: #D9D4CF;
 }
 
 .intro-text {
     text-align: justify;
     padding: 30px 40px;
-    background-color: #95ACB9;
+    background-color: #D9D4CF;
 }
 
 #map {
@@ -118,7 +122,14 @@ main {
     height: 28%;
     background-image: url("/img/小地圖.jpg");
     background-size: contain;
-    margin-top: 80px;
+    margin-top: 50px;
+}
+
+@media (max-width: 1399px) {
+    .mini-map {
+        margin-top: 30px;
+        height: 24%;
+    }
 }
 
 #small {
