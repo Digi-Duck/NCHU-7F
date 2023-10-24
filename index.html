@@ -43,7 +43,7 @@
                 <menu class="align-items-center">
                     <i class="left-btn bi bi-caret-left-fill"></i>
                     <div class="menu-view rounded-2">
-                        <div class="rooms p-2 d-flex">
+                        <div class="rooms d-flex">
                             <button type="button" class="room-btn fw-bold">ROOM701</button>
                             <button type="button" class="room-btn fw-bold">ROOM702</button>
                             <button type="button" class="room-btn fw-bold">ROOM703</button>
@@ -109,11 +109,19 @@
             const viewLength = view.clientWidth;
             const leftMove = Math.abs(parseInt(window.getComputedStyle(rooms, null).left));// 取得rooms left的值
             if (allLength < viewLength) return;
-            if (leftMove + viewLength + 148.7 * 3 >= allLength) {
-                // 到底的時候
-                rooms.style.left = '-' + (allLength - viewLength) + 'px';
+            if (viewLength <= 452) {
+                if (leftMove + viewLength + 104 * 3 >= 1352) {
+                    // 右到底的時候
+                    rooms.style.left = '-' + (1352 - viewLength) + 'px';
+                } else {
+                    rooms.style.left = '-' + (leftMove + (104 * 3)) + 'px'
+                }
             } else {
-                rooms.style.left = '-' + (leftMove + (148.7 * 3)) + 'px'
+                if (leftMove + viewLength + 148.7 * 3 >= allLength) {
+                    rooms.style.left = '-' + (allLength - viewLength) + 'px';
+                } else {
+                    rooms.style.left = '-' + (leftMove + (148.7 * 3)) + 'px'
+                }
             }
         };
 
@@ -122,10 +130,18 @@
             const viewLength = view.clientWidth;
             const leftMove = Math.abs(parseInt(window.getComputedStyle(rooms, null)?.left));// 取得rooms left的值
             if (allLength < viewLength) return;
-            if (leftMove + viewLength - (148.7 * 3) < viewLength) {
-                rooms.style.left = '0px';
+            if (viewLength <= 452) {
+                if (leftMove + viewLength - (104 * 3) < viewLength) {
+                    rooms.style.left = '0px';
+                } else {
+                    rooms.style.left = '-' + (leftMove - (104 * 3)) + 'px'
+                }
             } else {
-                rooms.style.left = '-' + (leftMove - (148.7 * 3)) + 'px'
+                if (leftMove + viewLength - (148.7 * 3) < viewLength) {
+                    rooms.style.left = '0px';
+                } else {
+                    rooms.style.left = '-' + (leftMove - (148.7 * 3)) + 'px'
+                }
             }
         };
     </script>
