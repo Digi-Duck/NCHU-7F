@@ -200,13 +200,40 @@
                 const roomDiv = document.createElement('div');
                 roomDiv.className = 'label';
                 roomDiv.textContent = '系學會教室';
-                roomDiv.style.backgroundColor = 'transparent';
+                
+                roomDiv.style.backgroundColor = 'black';
+                roomDiv.style.width = 'px'
+                roomDiv.style.fontSize = '5px'
+                // const Div706 = document.createElement('div')
+                // Div706.className = 'label';
+                // Div706.textContent = '文創學會';
+                // Div706.style.backgroundColor = 'black';
+                // Div706.style.width = 'px'
+                // Div706.style.fontSize = '5px'
+                // const Div720 = document.createElement('div')
+                // Div720.className = 'label';
+                // Div720.textContent = '品管採購專案辦公室';
+                // Div720.style.backgroundColor = 'black';
+                // Div720.style.width = 'px'
+                // Div720.style.fontSize = '5px'
 
                 const roomLabel = new CSS2DObject(roomDiv);
-                roomLabel.position.set(0, 0, 0);
-                roomLabel.center.set(0.5, 1, 0);
+                roomLabel.position.set(-0.3, 0.3, -0.6);
+                roomLabel.center.set(0, 0, 0);
                 root2[1].add(roomLabel);
                 roomLabel.layers.set(0);
+                // const Label706 = new CSS2DObject(Div706);
+                // Label706.position.set(-0.7, 0.3, -0.6);
+                // Label706.center.set(0, 0, 0);
+                // root2[1].add(Label706);
+                // Label706.layers.set(0);
+                // const Label720 = new CSS2DObject(Div720);
+                // Label720.position.set(0.2, 0.3, -0.6);
+                // Label720.center.set(0, 0, 0);
+                // root2[1].add(Label720);
+                // Label720.layers.set(0);
+                // console.log(root2[2]);
+
 
                 const loading = document.getElementById('loading-mask');
                 loading.style.display = 'none';
