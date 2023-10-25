@@ -612,7 +612,7 @@
                     loadinganime2.style.animationPlayState = 'running'
                     setTimeout(() => {
                         loadinganime.style.display = 'none';
-                    }, 1000);
+                    }, 500);
                 },
                 // 以下為loading相關
                 function (load) {
@@ -623,7 +623,7 @@
                     loading_fill.style.width = percent * 282 + "px"
                 }
             );
-        }, 500);
+        }, 100);
 
 
         const clock = new THREE.Clock();
