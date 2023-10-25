@@ -31,10 +31,12 @@
     <nav>
         <div class=" container-lg px-4 h-100">
             <div class="nav-box m-auto gap-3 d-flex align-items-center h-100">
-                <button type="button" class="home-btn home-mobile justify-content-center align-items-center" onclick="location.href='index.html'">
+                <button type="button" class="home-btn home-mobile justify-content-center align-items-center"
+                    onclick="location.href='index.html'">
                     <iconify-icon icon="ic:round-home"></iconify-icon>
                 </button>
-                <button type="button" class="home-btn home-pc fw-bold" onclick="location.href='index.html'">HOME</button>
+                <button type="button" class="home-btn home-pc fw-bold"
+                    onclick="location.href='index.html'">HOME</button>
                 <input type="checkbox" id="menu-switch" hidden>
                 <label for="menu-switch" class="menu-btn menu-mobile justify-content-center align-items-center">
                     <iconify-icon icon="ion:menu"></iconify-icon>
@@ -237,46 +239,49 @@
         const loader = new GLTFLoader();
         let mixer;
         // 匯入fbx(路徑, 加載完成後呼叫函數, 載入中呼叫函數, 讀取錯誤時呼叫函數)
-        loader.load(
-            '2.glb',
-            (object) => {
-                let all = object.scene
-                let root = object.scenes[0]
-                let root2 = root.children
-                scene.add(all)
-                camera = object.cameras[0];
+        setTimeout(() => {
+            loader.load(
+                '2.glb',
+                (object) => {
+                    let all = object.scene
+                    let root = object.scenes[0]
+                    let root2 = root.children
+                    scene.add(all)
+                    camera = object.cameras[0];
 
-                // clip這邊的才是控制物體動畫的關鍵
-                const clip = object.animations[0];
+                    // clip這邊的才是控制物體動畫的關鍵
+                    const clip = object.animations[0];
 
-                // 這個mixer是要找到這個檔案的全部物體
-                let mixer = new THREE.AnimationMixer(all);
-                //把CLIP變成能用action操作
-                const action = mixer.clipAction(clip);
-                createAnimation(mixer, action, clip);
+                    // 這個mixer是要找到這個檔案的全部物體
+                    let mixer = new THREE.AnimationMixer(all);
+                    //把CLIP變成能用action操作
+                    const action = mixer.clipAction(clip);
+                    createAnimation(mixer, action, clip);
 
-                // 啟動特定的action
-                action.play();
+                    // 啟動特定的action
+                    action.play();
 
-                const loading = document.getElementById('loading-mask');
-                loading.style.display = 'none';
-                const loadinganime = document.getElementById('loading-mask-2')
-                const loadinganime2 = document.getElementById('loading-bar-2')
-                loadinganime.style.animationPlayState = 'running'
-                loadinganime2.style.animationPlayState = 'running'
-                setTimeout(() => {
-                    loadinganime.style.display = 'none';
-                }, 1500);
-            },
-            // 以下為loading相關
-            function (load) {
-                const percent = load.loaded / load.total
-                const loading_text = document.getElementById('loading-text')
-                const loading_fill = document.getElementById('loading-fill')
-                loading_text.innerHTML = Math.floor(percent * 100) + '%'
-                loading_fill.style.width = percent * 282 + "px"
-            }
-        );
+                    const loading = document.getElementById('loading-mask');
+                    loading.style.display = 'none';
+                    const loadinganime = document.getElementById('loading-mask-2')
+                    const loadinganime2 = document.getElementById('loading-bar-2')
+                    loadinganime.style.animationPlayState = 'running'
+                    loadinganime2.style.animationPlayState = 'running'
+                    setTimeout(() => {
+                        loadinganime.style.display = 'none';
+                    }, 1000);
+                },
+                // 以下為loading相關
+                function (load) {
+                    const percent = load.loaded / load.total
+                    const loading_text = document.getElementById('loading-text')
+                    const loading_fill = document.getElementById('loading-fill')
+                    loading_text.innerHTML = Math.floor(percent * 100) + '%'
+                    loading_fill.style.width = percent * 282 + "px"
+                }
+            );
+        }, 500);
+
 
         const clock = new THREE.Clock();
 
@@ -296,7 +301,7 @@
                 scrollTrigger: {
                     trigger: renderer.domElement,
                     start: "top-=110px top",
-                    end: "+=1000%",
+                    end: "+=1000px",
                     pin: pos,
                     scrub: true,
                     onUpdate: function () {
