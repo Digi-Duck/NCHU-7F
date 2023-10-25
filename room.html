@@ -301,7 +301,7 @@
                 scrollTrigger: {
                     trigger: renderer.domElement,
                     start: "top-=110px top",
-                    end: "+=1000px",
+                    end: "+=1000%",
                     pin: pos,
                     scrub: true,
                     onUpdate: function () {
@@ -324,12 +324,15 @@
             if (camera) renderer.render(scene, camera);
         }
         function resize() {
-            if (window.innerWidth >= 400) {
+            if (window.innerWidth >= 817) {
                 camera.updateProjectionMatrix();
                 renderer.setSize(pos.offsetWidth, 650);
                 ScrollTrigger.refresh();
             }
-            else {
+            else if( window.innerWidth <= 817 , window.innerWidth >= 394) {
+                renderer.setSize(pos.offsetWidth, 450);
+            }
+            else if (window.innerWidth <=393) {
                 renderer.setSize(pos.offsetWidth, 320);
             }
 
