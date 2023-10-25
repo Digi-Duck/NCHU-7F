@@ -73,7 +73,7 @@
                     中感覺好⋯篇類的想生存失，台灣的是不是要的事情感覺都，這個的做過幾專輯的推何相。樣啊而可器人：今天玩家是想要不該，也有一開不再第一收到？我也不部分我，的味是。個太誇日本我也很，是我，一起加，仔細。每天都。比較，要開我記得我也換個師阿可是，偶日本自己一，有說的身影是人應該不，自己性我今天聖誕節，還是進入。
                 </div>
             </div>
-            <div id="map" class="bg-body-secondary col-9 rounded-3 p-0"></div>
+            <div id="map" class=" col-9 rounded-3 p-0"></div>
             <div class="intro-2 w-100 rounded-3">
                 <h3 class="w-100 pt-4 px-1 fw-bold text-center">綜合大樓-7樓導覽地圖</h3>
                 <div class="intro-text w-100">
@@ -165,7 +165,7 @@
         // 新增攝影機
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         // 設置攝影機位置
-        camera.position.set(-0, 8, 8);
+        camera.position.set(-0, 5, 5);
         camera.rotation.set(-0.5, 0, 0)
 
         // 新增渲染器
@@ -179,19 +179,23 @@
 
 
         // 新增燈光
-        const light = new THREE.AmbientLight(0x404040, 100);
-        scene.add(light);
+        // const light = new THREE.AmbientLight(0x404040, 100);
+        // scene.add(light);
+        // const light = new THREE.PointLight(0xff0000, 40, 100);
+        // light.position.set(0, 3, 0);
+        // scene.add(light);
 
         // 新增GLTFLoader
         const loader = new GLTFLoader();
         // 匯入物件(路徑, 加載完成後呼叫函數
         loader.load(
-            './model/首頁測試.glb',
+            './model/1.glb',
             (object) => {
                 let all = object.scene
                 let root = object.scenes[0]
                 const root2 = root.children
                 scene.add(all)
+
                 // 以下為標籤寫在LOAD裡不然綁不到
                 const roomDiv = document.createElement('div');
                 roomDiv.className = 'label';
