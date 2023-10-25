@@ -222,21 +222,21 @@
             alpha: true
         });
 
-        function size() {
-            if (window.innerWidth >= 817) {
-                renderer.setSize(pos.offsetWidth, 650);
-               
-            }
-            else if( window.innerWidth <= 817 , window.innerWidth >= 394) {
-                renderer.setSize(pos.offsetWidth, 450);
-                
-            }
-            else if (window.innerWidth <=393) {
-                renderer.setSize(pos.offsetWidth, 320);
-                
-            }
+        // function size() {
+        //     if (window.innerWidth >= 817) {
+        //         renderer.setSize(pos.offsetWidth, 650);
 
-        }
+        //     }
+        //     else if (window.innerWidth <= 817, window.innerWidth >= 394) {
+        //         renderer.setSize(pos.offsetWidth, 450);
+
+        //     }
+        //     else if (window.innerWidth <= 393) {
+        //         renderer.setSize(pos.offsetWidth, 320);
+
+        //     }
+
+        // }
 
         pos.appendChild(renderer.domElement);
 
@@ -299,6 +299,7 @@
         const clock = new THREE.Clock();
 
         function createAnimation(mixer, action, clip) {
+
             let proxy = {
                 get time() {
                     return mixer.time;
@@ -311,29 +312,30 @@
             };
 
             let scrollingTL = gsap.timeline({
+
                 scrollTrigger: {
                     trigger: renderer.domElement,
                     start: "top-=110px top",
-                    end: "+=1000%",
+                    end: "+=250%",
                     pin: pos,
-                    
                     scrub: true,
                     onUpdate: function () {
                     }
-
                 }
+
+
             })
 
                 .to(proxy, {
                     time: clip.duration,
                 })
-                
+            
         }
 
 
         // 設置render loop(animate loop)
         function animate() {
-            size()
+            // size()
             requestAnimationFrame(animate);
             const delta = clock.getDelta()
             if (mixer) mixer.update(delta);
@@ -341,19 +343,19 @@
         }
         function resize() {
             if (window.innerWidth >= 817) {
-                camera.updateProjectionMatrix();
+                if (camera) camera.updateProjectionMatrix();
                 renderer.setSize(pos.offsetWidth, 650);
                 ScrollTrigger.refresh();
             }
-            else if( window.innerWidth <= 817 , window.innerWidth >= 394) {
+            else if (window.innerWidth <= 817, window.innerWidth >= 394) {
                 renderer.setSize(pos.offsetWidth, 450);
+                
             }
-            else if (window.innerWidth <=393) {
+            else if (window.innerWidth <= 393) {
                 renderer.setSize(pos.offsetWidth, 320);
             }
-
         }
-        
+        resize();
         animate();
         window.addEventListener('resize', resize)
     </script>

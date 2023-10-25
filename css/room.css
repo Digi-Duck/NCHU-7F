@@ -11,6 +11,10 @@ html {
     box-sizing: border-box;
 }
 
+.pin-spacer{
+    height: auto !important;
+    padding: 0 !important;
+}
 #loading-mask-2 {
     width: 100%;
     height: 100vh;
