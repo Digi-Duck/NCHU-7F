@@ -49,7 +49,7 @@ menu {
 }
 
 @media (max-width: 990px) {
-   menu {
+    menu {
         width: 100%;
         height: 0;
         position: absolute;
@@ -70,17 +70,21 @@ menu {
     transition: 0.8s;
 }
 
-.home-pc, .menu-pc {
+.home-pc,
+.menu-pc {
     display: block;
 }
 
 @media (max-width: 991px) {
-    .home-pc, .menu-pc {
+
+    .home-pc,
+    .menu-pc {
         display: none;
     }
 }
 
-.home-mobile, .menu-mobile {
+.home-mobile,
+.menu-mobile {
     width: 40px;
     height: 40px;
     font-size: 32px;
@@ -89,7 +93,9 @@ menu {
 }
 
 @media (max-width: 990px) {
-    .home-mobile, .menu-mobile {
+
+    .home-mobile,
+    .menu-mobile {
         display: flex;
     }
 }
@@ -151,6 +157,18 @@ main {
     padding-top: 80px;
 }
 
+@media (max-width: 990px) {
+    main {
+        padding-top: 100px;
+    }
+}
+
+@media (max-width: 540px) {
+    main {
+        padding-top: 130px;
+    }
+}
+
 .content {
     margin: auto;
     padding: 6% 13px 0 13px;
@@ -161,9 +179,6 @@ main {
     .content {
         max-width: 1420px;
     }
-}
-.intro-2{
-    display: none;
 }
 
 .intro h3 {
@@ -177,9 +192,53 @@ main {
     background-color: #D9D4CF;
 }
 
+@media(max-width: 1200px) {
+    .intro-text {
+        padding: 20px;
+    }
+}
+
 #map {
     height: 3000px;
     position: relative;
+}
+
+@media (max-width: 816px) {
+    .intro {
+        display: none;
+    }
+
+    .intro-2 {
+        background-color: #D9D4CF;
+    }
+
+    .intro-2 h3 {
+        font-size: 24px;
+    }
+
+    .intro-2 h3 div {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    #map {
+        width: 100%;
+        height: 450px;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .row {
+        display: block;
+    }
+}
+
+@media(max-width: 393px) {
+    #map {
+        height: 320px;
+    }
 }
 
 .mini-map {
@@ -187,13 +246,25 @@ main {
     height: 28%;
     background-image: url("/img/小地圖.jpg");
     background-size: contain;
+    background-repeat: no-repeat;
     margin-top: 50px;
 }
 
-@media (max-width: 1399px) {
-    .mini-map {
-        margin-top: 30px;
-        height: 24%;
+.intro-box {
+    margin-top: 30px;
+    display: none;
+    align-items: end;
+}
+
+@media  (min-width: 675px) {
+    .intro-box {
+        align-items: start;
+    }
+}
+
+@media  (max-width: 816px) {    
+    .intro-box {
+        display: flex;
     }
 }
 
@@ -223,32 +294,4 @@ dialog::backdrop {
 #close {
     width: 100px;
     height: 50px;
-}
-@media (max-width:393px) {
-    .intro  {
-    display: none;
-    }
-    .intro-2{
-        margin-top: 10px;
-            display: block;
-            width: 100%;
-    }
-    .intro-2 h3{
-        font-size: 24px;
-        background-color: #D9D4CF;
-    }
-    .intro-2 h3 div{
-        font-size: 15px;
-        background-color: #D9D4CF;
-    }
-    #map{
-        width: 372px;
-        height: 320px;
-    }
-    .content{
-        width: 372px;
-    }
-    .row{
-        display: block;
-    }
 }
