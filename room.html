@@ -77,7 +77,7 @@
                 <div  class="mini-map show"></div>
                 <dialog id="infoModal">
                     <div id="small"></div>
-                    <button id="close">close</button>
+
                 </dialog>
             </div>
             <div id="map" class="bg-body-secondary col-9 rounded-3 p-0"></div>
@@ -106,7 +106,7 @@
                     <div  class="mini-map show"></div>
                     <dialog id="infoModal">
                         <div id="small"></div>
-                        <button id="close">close</button>
+    
                     </dialog>
                 </div>
                 <div class="intro-box w-100 p-0">
@@ -134,7 +134,7 @@
                 <div  class="mini-map show"></div>
                 <dialog id="infoModal">
                     <div id="small"></div>
-                    <button id="close">close</button>
+
                 </dialog>
             </div>
             <div class="intro-box w-100 p-0">
@@ -162,7 +162,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -190,7 +189,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -218,7 +216,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -246,7 +243,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -274,7 +270,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -302,7 +297,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -330,7 +324,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -358,7 +351,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -386,7 +378,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -403,6 +394,7 @@
         </div>
     </div>
 </main>
+<div id="2"></div>
 <main class="container-lg">
     <div class="content row">
         <div class="intro col-3 h-100 ps-0 pe-3">
@@ -414,7 +406,6 @@
             <div  class="mini-map show"></div>
             <dialog id="infoModal">
                 <div id="small"></div>
-                <button id="close">close</button>
             </dialog>
         </div>
         <div class="intro-box w-100 p-0">
@@ -501,9 +492,9 @@
         // btn.addEventListener("click", function () {
         //     infoModal.showModal();
         // })
-        close.addEventListener("click", function () {
-            infoModal.close();
-        })
+        // close.addEventListener("click", function () {
+        //     infoModal.close();
+        // })
     </script>
 
 
@@ -765,7 +756,7 @@
             })) {
                 location.href = "room.html#2";
                 // window.scrollTo( 0, 1000 );
-
+                infoModal.close();
             }
 
         }
