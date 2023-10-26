@@ -11,6 +11,10 @@ html {
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 #loading-mask-2 {
     width: 100%;
     height: 100vh;
@@ -241,7 +245,7 @@ menu i {
 }
 
 main {
-    height: 100vh;
+    height: calc(100vh - 120px);
     padding-top: 80px;
 }
 
@@ -317,4 +321,34 @@ main {
         width: 372px;
         height: 320px;
     }
+}
+
+footer {
+    margin-top: 40px;
+    height: 80px;
+    border-top: #D9D4CF solid 2px;
+    color: #D9D4CF;
+}
+
+.footer-box {
+    height: 100%;
+}
+
+footer h5 {
+    font-size: 19px;
+    margin: 0;
+}
+
+footer .line {
+    font-size: 25px;
+}
+
+.connect {
+    font-size: 19px;
+    color: #D9D4CF;
+    margin-left: 20px;
+    padding: 4px;
+    border: #D9D4CF solid 1px;
+    border-radius: 4px;
+    cursor: pointer;
 }

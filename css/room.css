@@ -11,6 +11,10 @@ html {
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 .pin-spacer{
     height: auto !important;
     padding: 0 !important;
@@ -404,8 +408,11 @@ footer .line {
 }
 
 .connect {
+    font-size: 19px;
+    color: #D9D4CF;
     margin-left: 20px;
     padding: 4px;
     border: #D9D4CF solid 1px;
     border-radius: 4px;
+    cursor: pointer;
 }
