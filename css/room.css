@@ -243,6 +243,11 @@ menu i {
     }
 }
 
+.target {
+    height: 1080px;
+    float: left;
+}
+
 main {
     padding-top: 80px;
 }
@@ -289,7 +294,7 @@ main {
 }
 
 #map {
-    height: 9500px;
+    /* height: 10650px; */
     position: relative;
 }
 

@@ -67,6 +67,7 @@
         </div>
     </nav>
     <main class="container-lg">
+        <section class="target"></section>
         <div id="701" class="content row">
             <div class="intro col-3 h-100 ps-0 pe-3">
                 <h3 class="w-100 py-3 px-1 mb-3 fw-bold text-center rounded-3">ROOM701</h3>
@@ -548,6 +549,7 @@
         const pos = document.getElementById('map');
         // 新增渲染器
         const renderer = new THREE.WebGLRenderer({
+            antialias: true,
             alpha: true
         });
 
@@ -583,7 +585,7 @@
         // 匯入fbx(路徑, 加載完成後呼叫函數, 載入中呼叫函數, 讀取錯誤時呼叫函數)
         setTimeout(() => {
             loader.load(
-                './model/房間測試.glb',
+                './model/1026-combine-animate(2).glb',
                 (object) => {
                     let all = object.scene
                     let root = object.scenes[0]
@@ -628,6 +630,7 @@
         const clock = new THREE.Clock();
 
         function createAnimation(mixer, action, clip) {
+            console.log(mixer);
 
             let proxy = {
                 get time() {
@@ -637,15 +640,16 @@
                     action.paused = false;
                     mixer.setTime(value);
                     action.paused = true;
+                    mixer.timeScale = 0.965;
                 }
             };
 
             let scrollingTL = gsap.timeline({
 
                 scrollTrigger: {
-                    trigger: renderer.domElement,
-                    start: "top-=110px top",
-                    end: "+=230%",
+                    trigger: ".target",
+                    start: "top-=40px top",
+                    end: "+=1312%",
                     pin: pos,
                     scrub: true,
                     onUpdate: function () {
