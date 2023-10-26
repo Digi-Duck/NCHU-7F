@@ -206,50 +206,160 @@
         const loader = new GLTFLoader();
         // 匯入物件(路徑, 加載完成後呼叫函數
         loader.load(
-            './model/1.glb',
+            './model/首頁模型.glb',
             (object) => {
                 let all = object.scene
                 let root = object.scenes[0]
                 const root2 = root.children
                 scene.add(all)
+                console.log(root2[0].children);
 
                 // 以下為標籤寫在LOAD裡不然綁不到
-                const roomDiv = document.createElement('div');
-                roomDiv.className = 'label';
-                roomDiv.textContent = '系學會教室';
-                
-                roomDiv.style.backgroundColor = 'black';
-                roomDiv.style.width = 'px'
-                roomDiv.style.fontSize = '5px'
-                // const Div706 = document.createElement('div')
-                // Div706.className = 'label';
-                // Div706.textContent = '文創學會';
-                // Div706.style.backgroundColor = 'black';
-                // Div706.style.width = 'px'
-                // Div706.style.fontSize = '5px'
-                // const Div720 = document.createElement('div')
-                // Div720.className = 'label';
-                // Div720.textContent = '品管採購專案辦公室';
-                // Div720.style.backgroundColor = 'black';
-                // Div720.style.width = 'px'
-                // Div720.style.fontSize = '5px'
+                const Div701 = document.createElement('div')
+                Div701.className = 'label';
+                Div701.textContent = '系所辦公室';
+                Div701.style.backgroundColor = 'black';
+                Div701.style.width = 'px'
+                Div701.style.fontSize = '10px'
+                const Div706 = document.createElement('div')
+                Div706.className = 'label';
+                Div706.textContent = '706';
+                Div706.style.backgroundColor = 'black';
+                Div706.style.width = 'px'
+                Div706.style.fontSize = '10px'
+                const Div707 = document.createElement('div')
+                Div707.className = 'label';
+                Div707.textContent = '707';
+                Div707.style.backgroundColor = 'black';
+                Div707.style.width = 'px'
+                Div707.style.fontSize = '10px'
+                const Div708 = document.createElement('div')
+                Div708.className = 'label';
+                Div708.textContent = '文創學會';
+                Div708.style.backgroundColor = 'black';
+                Div708.style.width = 'px'
+                Div708.style.fontSize = '10px'
+                const Div709 = document.createElement('div')
+                Div709.className = 'label';
+                Div709.textContent = '手作教室';
+                Div709.style.backgroundColor = 'black';
+                Div709.style.width = 'px'
+                Div709.style.fontSize = '10px'
+                const Div711 = document.createElement('div')
+                Div711.className = 'label';
+                Div711.textContent = '教室';
+                Div711.style.backgroundColor = 'black';
+                Div711.style.width = 'px'
+                Div711.style.fontSize = '10px'
+                const Div713 = document.createElement('div')
+                Div713.className = 'label';
+                Div713.textContent = '電腦教室';
+                Div713.style.backgroundColor = 'black';
+                Div713.style.width = 'px'
+                Div713.style.fontSize = '10px'
+                const Div716 = document.createElement('div');
+                Div716.className = 'label';
+                Div716.textContent = '系學會';
+                Div716.style.backgroundColor = 'black';
+                Div716.style.width = 'px'
+                Div716.style.fontSize = '10px'
+                const Div717 = document.createElement('div')
+                Div717.className = 'label';
+                Div717.textContent = '電腦教室';
+                Div717.style.backgroundColor = 'black';
+                Div717.style.width = 'px'
+                Div717.style.fontSize = '10px'
+                const Div720 = document.createElement('div')
+                Div720.className = 'label';
+                Div720.textContent = '品管採購專案辦公室';
+                Div720.style.backgroundColor = 'black';
+                Div720.style.width = 'px'
+                Div720.style.fontSize = '10px'
+                const Div721 = document.createElement('div')
+                Div721.className = 'label';
+                Div721.textContent = '721';
+                Div721.style.backgroundColor = 'black';
+                Div721.style.width = 'px'
+                Div721.style.fontSize = '10px'
+                const Div722 = document.createElement('div')
+                Div722.className = 'label';
+                Div722.textContent = '722';
+                Div722.style.backgroundColor = 'black';
+                Div722.style.width = 'px'
+                Div722.style.fontSize = '10px'
+                const Div723 = document.createElement('div')
+                Div723.className = 'label';
+                Div723.textContent = '723';
+                Div723.style.backgroundColor = 'black';
+                Div723.style.width = 'px'
+                Div723.style.fontSize = '10px'
+    
 
-                const roomLabel = new CSS2DObject(roomDiv);
+                const Label717 = new CSS2DObject(Div717);
+                Label717.position.set(0.3, 0.3, -0.9);
+                Label717.center.set(0, 0, 0);
+                root2[0].children[1].add(Label717);
+                Label717.layers.set(0);
+                const Label713 = new CSS2DObject(Div713);
+                Label713.position.set(-0.3, 0.3, -0.9);
+                Label713.center.set(0, 0, 0);
+                root2[0].children[2].add(Label713);
+                Label713.layers.set(0);
+                const Label711 = new CSS2DObject(Div711);
+                Label711.position.set(-0.6, 0.3, -0.9);
+                Label711.center.set(0, 0, 0);
+                root2[0].children[3].add(Label711);
+                Label711.layers.set(0);
+                const Label709 = new CSS2DObject(Div709);
+                Label709.position.set(-0.9, 0.3, -0.9);
+                Label709.center.set(0, 0, 0);
+                root2[0].children[4].add(Label709);
+                Label709.layers.set(0);
+                const roomLabel = new CSS2DObject(Div716);
                 roomLabel.position.set(-0.3, 0.3, -0.6);
                 roomLabel.center.set(0, 0, 0);
-                root2[1].add(roomLabel);
+                root2[0].children[5].add(roomLabel);
                 roomLabel.layers.set(0);
-                // const Label706 = new CSS2DObject(Div706);
-                // Label706.position.set(-0.7, 0.3, -0.6);
-                // Label706.center.set(0, 0, 0);
-                // root2[1].add(Label706);
-                // Label706.layers.set(0);
-                // const Label720 = new CSS2DObject(Div720);
-                // Label720.position.set(0.2, 0.3, -0.6);
-                // Label720.center.set(0, 0, 0);
-                // root2[1].add(Label720);
-                // Label720.layers.set(0);
-                // console.log(root2[2]);
+                const Label708 = new CSS2DObject(Div708);
+                Label708.position.set(-0.7, 0.3, -0.6);
+                Label708.center.set(0, 0, 0);
+                root2[0].children[6].add(Label708);
+                Label708.layers.set(0);
+                const Label720 = new CSS2DObject(Div720);
+                Label720.position.set(0.2, 0.3, -0.6);
+                Label720.center.set(0, 0, 0);
+                root2[0].children[7].add(Label720);
+                Label720.layers.set(0);
+                const Label721 = new CSS2DObject(Div721);
+                Label721.position.set(1.1, 0.3, -0.4);
+                Label721.center.set(0, 0, 0);
+                root2[0].children[8].add(Label721);
+                Label721.layers.set(0);
+                const Label722 = new CSS2DObject(Div722);
+                Label722.position.set(1.1, 0.3, 0);
+                Label722.center.set(0, 0, 0);
+                root2[0].children[9].add(Label722);
+                Label722.layers.set(0);
+                const Label723 = new CSS2DObject(Div723);
+                Label723.position.set(1.1, 0.3, 0.5);
+                Label723.center.set(0, 0, 0);
+                root2[0].children[10].add(Label723);
+                Label723.layers.set(0);
+                const Label701 = new CSS2DObject(Div701);
+                Label701.position.set(0, 0.3, 1.1);
+                Label701.center.set(0, 0, 0);
+                root2[0].children[11].add(Label701);
+                Label701.layers.set(0);
+                const Label706 = new CSS2DObject(Div706);
+                Label706.position.set(-1.2, 0.3, 0.5);
+                Label706.center.set(0, 0, 0);
+                root2[0].children[12].add(Label706);
+                Label706.layers.set(0);
+                const Label707 = new CSS2DObject(Div707);
+                Label707.position.set(-1.2, 0.3, 0);
+                Label707.center.set(0, 0, 0);
+                root2[0].children[13].add(Label707);
+                Label707.layers.set(0);
 
 
                 const loading = document.getElementById('loading-mask');
@@ -298,9 +408,69 @@
             var intersects = raycaster.intersectObjects(scene.children);
             // 點擊到的物件陣列裡是否有系學會教室
             if (intersects.some(function (obj) {
-                return obj.object.name == '系學會教室'
+                return obj.object.material.name == '701'
             })) {
-                location.href = "room.html#2";
+                location.href = "room.html#701";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '706'
+            })) {
+                location.href = "room.html#706";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '707'
+            })) {
+                location.href = "room.html#707";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '708'
+            })) {
+                location.href = "room.html#708";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '709'
+            })) {
+                location.href = "room.html#709";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '711'
+            })) {
+                location.href = "room.html#711";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '713'
+            })) {
+                location.href = "room.html#713";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '716'
+            })) {
+                location.href = "room.html#716";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '717'
+            })) {
+                location.href = "room.html#717";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '720'
+            })) {
+                location.href = "room.html#720";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '721'
+            })) {
+                location.href = "room.html#721";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '722'
+            })) {
+                location.href = "room.html#722";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '723'
+            })) {
+                location.href = "room.html#723";
             }
         }
         pos.addEventListener('click', onmodelclick);
