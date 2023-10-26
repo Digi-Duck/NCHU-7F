@@ -26,7 +26,6 @@
             <div id="loading-bar-2"></div>
             <h5>100%</h5>
         </div>
-
     </div>
     <nav>
         <div class=" container-lg px-4 h-100">
@@ -83,7 +82,9 @@
 
                 </dialog>
             </div>
-            <div id="map" class="bg-body-secondary col-9 rounded-3 p-0"></div>
+            <div id="map" class="bg-body-secondary col-9 rounded-3 p-0">
+                <div class="map-view"></div>
+            </div>
             <div class="intro-box w-100 p-0">
                 <div class="intro-2 col-8 rounded-3 me-3">
                     <h3 class="w-100 pt-4 px-1 fw-bold text-center">ROOM701
@@ -630,8 +631,6 @@
         const clock = new THREE.Clock();
 
         function createAnimation(mixer, action, clip) {
-            console.log(mixer);
-
             let proxy = {
                 get time() {
                     return mixer.time;
@@ -643,29 +642,29 @@
                     mixer.timeScale = 0.965;
                 }
             };
-
+            console.log(camera);
             let scrollingTL = gsap.timeline({
 
                 scrollTrigger: {
                     trigger: ".target",
                     start: "top-=40px top",
-                    end: "+=1312%",
+                    end: "+=1235%",
                     pin: pos,
                     scrub: true,
                     onUpdate: function () {
                     }
                 }
 
-
             })
 
                 .to(proxy, {
                     time: clip.duration,
+                    ease: "none",
                 })
-
         }
 
-
+        const mapView = document.querySelector('.map-view')
+        console.dir(mapView);
         // 設置render loop(animate loop)
         function animate() {
             // size()
@@ -677,15 +676,15 @@
         function resize() {
             if (window.innerWidth >= 817) {
                 if (camera) camera.updateProjectionMatrix();
-                renderer.setSize(pos.offsetWidth, 650);
+                renderer.setSize(mapView.offsetWidth, mapView.offsetHeight);
                 ScrollTrigger.refresh();
             }
             else if (window.innerWidth <= 817, window.innerWidth >= 394) {
-                renderer.setSize(pos.offsetWidth, 450);
+                renderer.setSize(mapView.offsetWidth, mapView.offsetWidth);
 
             }
             else if (window.innerWidth <= 393) {
-                renderer.setSize(pos.offsetWidth, 320);
+                renderer.setSize(mapView.offsetWidth, mapView.offsetWidth);
             }
         }
         resize();

@@ -298,6 +298,12 @@ main {
     position: relative;
 }
 
+.map-view {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: absolute;
+}
+
 @media (max-width: 816px) {
     .intro {
         display: none;
