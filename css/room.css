@@ -15,6 +15,18 @@ a {
     text-decoration: none;
 }
 
+.page {
+    width: 100%;
+    height: calc(13100px + 100px);
+    overflow: hidden;
+}
+
+@media (max-width: 813px) {
+    .page {
+        height: calc(13100px + 120px);
+    }
+}
+
 .pin-spacer{
     height: auto !important;
     padding: 0 !important;
