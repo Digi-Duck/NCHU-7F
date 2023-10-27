@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <!-- <div id="loading-mask" class="align-items-center justify-content-center">
+    <div id="loading-mask" class="align-items-center justify-content-center">
         <div id="loading">
             <div id="loading-bar">
                 <div id="loading-fill"></div>
@@ -26,7 +26,7 @@
             <div id="loading-bar-2"></div>
             <h5>100%</h5>
         </div>
-    </div> -->
+    </div>
     <nav>
         <div class=" container-lg px-4 h-100">
             <div class="nav-box m-auto gap-3 d-flex align-items-center h-100">
@@ -45,19 +45,32 @@
                     <i class="left-btn bi bi-caret-left-fill"></i>
                     <div class="menu-view rounded-2">
                         <div class="rooms d-flex">
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#701'">ROOM701</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#706'">ROOM706</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#707'">ROOM707</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#708'">ROOM708</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#709'">ROOM709</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#711'">ROOM711</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#713'">ROOM713</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#716'">ROOM716</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#717'">ROOM717</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#720'">ROOM720</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#721'">ROOM721</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#722'">ROOM722</button>
-                            <button type="button" class="room-btn fw-bold" onclick="location.href='#723'">ROOM723</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#701'">ROOM701</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#706'">ROOM706</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#707'">ROOM707</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#708'">ROOM708</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#709'">ROOM709</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#711'">ROOM711</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#713'">ROOM713</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#716'">ROOM716</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#717'">ROOM717</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#720'">ROOM720</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#721'">ROOM721</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#722'">ROOM722</button>
+                            <button type="button" class="room-btn fw-bold"
+                                onclick="location.href='#723'">ROOM723</button>
                         </div>
                     </div>
                     <i class="right-btn bi bi-caret-right-fill"></i>
@@ -409,7 +422,7 @@
                     <img src="./img/723.jpg" alt="" class="w-100 ">
                 </div>
                 <dialog id="infoModal">
-                
+
                     <div id="small"></div>
                 </dialog>
             </div>
@@ -588,7 +601,7 @@
         // 匯入fbx(路徑, 加載完成後呼叫函數, 載入中呼叫函數, 讀取錯誤時呼叫函數)
         setTimeout(() => {
             loader.load(
-                './model/1027-攝影機拉遠+視窗大小調整.glb',
+                './model/1026-combine-animate(有兔子).glb',
                 (object) => {
                     let all = object.scene
                     let root = object.scenes[0]
@@ -634,37 +647,75 @@
         const clock = new THREE.Clock();
 
         function createAnimation(mixer, action, clip) {
-            let proxy = {
-                get time() {
-                    return mixer.time;
-                },
-                set time(value) {
-                    action.paused = false;
-                    mixer.setTime(value);
-                    action.paused = true;
-                    mixer.timeScale = 0.965;
-                }
-            };
-            console.log(camera);
-            let scrollingTL = gsap.timeline({
-
-                scrollTrigger: {
-                    trigger: ".target",
-                    start: "top top",
-                    endTrigger: ".last-room",
-                    end: "bottom bottom",
-                    pin: pos,
-                    scrub: true,
-                    onUpdate: function () {
+            if (window.innerHeight >= 1369) {
+                let proxy = {
+                    get time() {
+                        return mixer.time;
+                    },
+                    set time(value) {
+                        action.paused = false;
+                        mixer.setTime(value);
+                        action.paused = true;
+                        mixer.timeScale = 0.965;
                     }
-                }
+                };
+                console.log(camera);
+                let scrollingTL = gsap.timeline({
 
-            })
+                    scrollTrigger: {
+                        trigger: ".target",
+                        start: "top top",
+                        endTrigger: ".last-room",
+                        end: "bottom bottom",
+                        pin: pos,
+                        scrub: true,
+                        onUpdate: function () {
+                        }
+                    }
 
-                .to(proxy, {
-                    time: clip.duration,
-                    ease: "none",
                 })
+
+                    .to(proxy, {
+                        time: clip.duration,
+                        ease: "none",
+                    })
+
+            }
+            else if (window.innerHeight <= 1369) {
+                let proxy = {
+                    get time() {
+                        return mixer.time;
+                    },
+                    set time(value) {
+                        action.paused = false;
+                        mixer.setTime(value);
+                        action.paused = true;
+                        mixer.timeScale = 0.965;
+                    }
+                };
+                console.log(camera);
+                let scrollingTL = gsap.timeline({
+
+                    scrollTrigger: {
+                        trigger: ".target",
+                        start: "top top",
+                        endTrigger: ".last-room",
+                        end: "bottom bottom",
+                        pin: pos,
+                        scrub: true,
+                        onUpdate: function () {
+                        }
+                    }
+
+                })
+
+                    .to(proxy, {
+                        time: clip.duration,
+                        ease: "none",
+                    })
+
+            }
+
         }
 
         const mapView = document.querySelector('.map-view')
@@ -678,15 +729,15 @@
             if (camera) renderer.render(scene, camera);
         }
         function resize() {
-                if (camera) camera.updateProjectionMatrix();
-                renderer.setSize(mapView.offsetWidth, mapView.offsetHeight * 3);
-                ScrollTrigger.refresh();
+            if (camera) camera.updateProjectionMatrix();
+            renderer.setSize(mapView.offsetWidth, mapView.offsetHeight * 3);
+            ScrollTrigger.refresh();
         }
         resize();
         animate();
         window.addEventListener('resize', resize)
     </script>
-     <script type="module">
+    <script type="module">
         import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
         import * as THREE from 'three';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -698,7 +749,7 @@
         // 新增場景
         const scene2 = new THREE.Scene();
         // 新增攝影機
-        const camera2= new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         // 設置攝影機位置
         camera2.position.set(1, 5, 5);
         camera2.rotation.set(-0.5, 0, 0)
@@ -873,9 +924,9 @@
                 Label707.layers.set(0);
 
 
-                
+
             },
-            
+
         )
         // POS上面有宣告這裡的用途主要為將three.js綁在固定區域 label的為標籤的  
         pos2.appendChild(renderer2.domElement);
