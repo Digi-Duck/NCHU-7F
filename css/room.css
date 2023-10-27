@@ -296,6 +296,7 @@ main {
 #map {
     /* height: 10650px; */
     position: relative;
+    pointer-events: none;
 }
 
 .map-view {
