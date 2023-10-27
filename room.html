@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div id="loading-mask" class="align-items-center justify-content-center">
+    <!-- <div id="loading-mask" class="align-items-center justify-content-center">
         <div id="loading">
             <div id="loading-bar">
                 <div id="loading-fill"></div>
@@ -26,7 +26,7 @@
             <div id="loading-bar-2"></div>
             <h5>100%</h5>
         </div>
-    </div>
+    </div> -->
     <nav>
         <div class=" container-lg px-4 h-100">
             <div class="nav-box m-auto gap-3 d-flex align-items-center h-100">
@@ -533,7 +533,7 @@
             }
         </script>
 
-    <script type="module">
+    <!-- <script type="module">
         import * as THREE from 'three';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
@@ -690,7 +690,7 @@
         resize();
         animate();
         window.addEventListener('resize', resize)
-    </script>
+    </script> -->
      <script type="module">
         import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
         import * as THREE from 'three';
@@ -705,16 +705,16 @@
         // 新增攝影機
         const camera2= new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         // 設置攝影機位置
-        camera.position.set(-0, 5, 5);
-        camera.rotation.set(-0.5, 0, 0)
+        camera2.position.set(-0, 0, 0);
+        camera2.rotation.set(-0.5, 0, 0)
 
         // 新增渲染器
         const renderer2 = new THREE.WebGLRenderer({
             alpha: true,
             antialias: true,
         });
-        renderer.setSize(pos.offsetWidth, pos.offsetHeight);
-        console.log(pos);
+        renderer2.setSize(pos2.offsetWidth, pos2.offsetHeight);
+       
 
 
 
@@ -892,18 +892,18 @@ console.log(Div701);
             
         )
         // POS上面有宣告這裡的用途主要為將three.js綁在固定區域 label的為標籤的  
-        pos2.appendChild(renderer.domElement);
+        pos2.appendChild(renderer2.domElement);
         labelRenderer = new CSS2DRenderer();
-        labelRenderer.setSize(pos.offsetWidth, pos.offsetHeight);
+        labelRenderer.setSize(pos2.offsetWidth, pos2.offsetHeight);
         labelRenderer.domElement.style.position = 'absolute';
         labelRenderer.domElement.style.pointer = 'none'
         labelRenderer.domElement.style.top = '0px';
-        pos.appendChild(labelRenderer.domElement);
+        pos2.appendChild(labelRenderer.domElement);
         // 設置render loop(animate loop)
         function animate() {
             requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-            labelRenderer.render(scene, camera);
+            renderer2.render(scene2, camera2);
+            labelRenderer.render(scene2, camera2);
         }
         // 定位滑鼠位置所需要的宣告
         const raycaster = new THREE.Raycaster();
@@ -911,11 +911,11 @@ console.log(Div701);
 
         function onmodelclick(event) {
             // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
-            pointer.x = (event.layerX / pos.offsetWidth) * 2 - 1;
-            pointer.y = - (event.layerY / pos.offsetHeight) * 2 + 1;
-            raycaster.setFromCamera(pointer, camera);
+            pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
+            pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
+            raycaster.setFromCamera(pointer, camera2);
             // 获取raycaster直线和所有模型相交的数组集合
-            var intersects = raycaster.intersectObjects(scene.children);
+            var intersects = raycaster.intersectObjects(scene2.children);
             // 點擊到的物件陣列裡是否有系學會教室
             if (intersects.some(function (obj) {
                 return obj.object.material.name == '701'
@@ -1017,19 +1017,19 @@ console.log(Div701);
 
             }
 
-            renderer.render(scene2, camera);
+            renderer2.render(scene2, camera2);
 
         }
 
         pos2.addEventListener('pointermove', onPointerMove);
         pos2.addEventListener('click', onmodelclick);
         // // 新增控制器
-        const controls = new OrbitControls(camera, labelRenderer.domElement);
+        const controls = new OrbitControls(camera2, labelRenderer.domElement);
         function resize() {
-            camera.aspect = pos.offsetWidth / pos.offsetHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(pos.offsetWidth, pos.offsetHeight);
-            labelRenderer.setSize(pos.offsetWidth, pos.offsetHeight);
+            camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
+            camera2.updateProjectionMatrix();
+            renderer2.setSize(pos2.offsetWidth, pos2.offsetHeight);
+            labelRenderer.setSize(pos2.offsetWidth, pos2.offsetHeight);
         }
         window.addEventListener('resize', resize)
         animate();
