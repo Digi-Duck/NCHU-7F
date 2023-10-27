@@ -78,6 +78,7 @@
                     <img src="./img/701.jpg" alt="" class="w-100 ">
                 </div>
                 <dialog id="infoModal">
+                    <button id="close">X</button>
                     <div id="small"></div>
 
                 </dialog>
@@ -408,6 +409,7 @@
                     <img src="./img/723.jpg" alt="" class="w-100 ">
                 </div>
                 <dialog id="infoModal">
+                
                     <div id="small"></div>
                 </dialog>
             </div>
@@ -511,9 +513,9 @@
         // btn.addEventListener("click", function () {
         //     infoModal.showModal();
         // })
-        // close.addEventListener("click", function () {
-        //     infoModal.close();
-        // })
+        close.addEventListener("click", function () {
+            infoModal.close();
+        })
     </script>
 
 
@@ -706,7 +708,7 @@
         // 新增攝影機
         const camera2= new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         // 設置攝影機位置
-        camera2.position.set(-0, 5, 5);
+        camera2.position.set(1, 5, 5);
         camera2.rotation.set(-0.5, 0, 0)
 
         // 新增渲染器
@@ -810,7 +812,7 @@
                 Div723.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
                 Div723.style.color = 'black'
                 Div723.style.fontSize = '20px'
-console.log(Div701);
+
 
                 const Label717 = new CSS2DObject(Div717);
                 Label717.position.set(0.3, 0.3, -0.9);
