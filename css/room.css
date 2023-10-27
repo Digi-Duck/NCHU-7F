@@ -330,16 +330,25 @@ main {
 
     .content {
         width: 100%;
+        align-content: end;
+    }
+    
+    .first-room {
+        align-content: space-between;
     }
 
-    .row {
-        display: block;
+    .last-room {
+        padding-bottom: 40%;
     }
 }
 
 @media(max-width: 393px) {
     #map {
         height: 320px;
+    }
+
+    .last-room {
+        padding-bottom: 120px;
     }
 }
 

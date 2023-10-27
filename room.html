@@ -67,7 +67,7 @@
     </nav>
     <main class="container-lg">
         <section class="target"></section>
-        <div id="701" class="content row">
+        <div id="701" class="first-room content row">
             <div class="intro col-3 h-100 ps-0 pe-3">
                 <h3 class="w-100 py-3 px-1 mb-3 fw-bold text-center rounded-3">ROOM701</h3>
                 <div class="intro-text w-100 rounded-3">
@@ -397,7 +397,7 @@
                 </div>
             </div>
         </div>
-        <div id="723" class="content row">
+        <div id="723" class="last-room content row">
             <div class="intro col-3 h-100 ps-0 pe-3">
                 <h3 class="w-100 py-3 px-1 mb-3 fw-bold text-center rounded-3">ROOM723</h3>
                 <div class="intro-text w-100 rounded-3">
@@ -586,7 +586,7 @@
         // 匯入fbx(路徑, 加載完成後呼叫函數, 載入中呼叫函數, 讀取錯誤時呼叫函數)
         setTimeout(() => {
             loader.load(
-                './model/1026-combine-animate(有兔子).glb',
+                './model/1027-攝影機拉遠+視窗大小調整.glb',
                 (object) => {
                     let all = object.scene
                     let root = object.scenes[0]
@@ -649,7 +649,8 @@
                 scrollTrigger: {
                     trigger: ".target",
                     start: "top top",
-                    end: "+=1235%",
+                    endTrigger: ".last-room",
+                    end: "bottom bottom",
                     pin: pos,
                     scrub: true,
                     onUpdate: function () {
@@ -675,18 +676,9 @@
             if (camera) renderer.render(scene, camera);
         }
         function resize() {
-            if (window.innerWidth >= 817) {
                 if (camera) camera.updateProjectionMatrix();
                 renderer.setSize(mapView.offsetWidth, mapView.offsetHeight * 3);
                 ScrollTrigger.refresh();
-            }
-            else if (window.innerWidth <= 817, window.innerWidth >= 394) {
-                renderer.setSize(mapView.offsetWidth, offsetHeight * 3);
-
-            }
-            else if (window.innerWidth <= 393) {
-                renderer.setSize(mapView.offsetWidth, mapView.offsetHeight * 3);
-            }
         }
         resize();
         animate();
