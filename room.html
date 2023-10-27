@@ -692,66 +692,205 @@
         animate();
         window.addEventListener('resize', resize)
     </script>
-    <script type="module">
+     <script type="module">
         import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
         import * as THREE from 'three';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-        const small = document.getElementById('small');
+        const pos2 = document.getElementById('small');
 
         let labelRenderer;
         // 新增場景
         const scene2 = new THREE.Scene();
         // 新增攝影機
-        const camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera2= new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         // 設置攝影機位置
-        camera2.position.set(-0, 0, 5);
+        camera2.position.set(-0, 5, 5);
         camera2.rotation.set(-0.5, 0, 0)
 
         // 新增渲染器
-        const renderer2 = new THREE.WebGLRenderer();
+        const renderer2 = new THREE.WebGLRenderer({
+            alpha: true,
+            antialias: true,
+        });
         renderer2.setSize(1000, 600);
 
-
-        // 設背景顏色
-        scene2.background = new THREE.Color('skyblue');
-        // 新增燈光
-        const light2 = new THREE.AmbientLight(0x404040, 100);
-        scene2.add(light2);
 
         // 新增GLTFLoader
         const loader2 = new GLTFLoader();
         // 匯入物件(路徑, 加載完成後呼叫函數
         loader2.load(
-            './model/首頁測試.glb',
+            './model/首頁模型.glb',
             (object) => {
                 let all = object.scene
                 let root = object.scenes[0]
                 const root2 = root.children
                 scene2.add(all)
+                console.log(root2[0].children);
+
                 // 以下為標籤寫在LOAD裡不然綁不到
-                const earthDiv = document.createElement('div');
-                earthDiv.className = 'label';
-                earthDiv.textContent = '系學會教室';
-                earthDiv.style.backgroundColor = 'transparent';
+                const Div701 = document.createElement('div')
+                Div701.className = 'label';
+                Div701.textContent = '701';
+                Div701.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                // Div701.style.backgroundColor = 'black';
+                // Div701.style.width = 'px'
+                Div701.style.color = 'black'
+                Div701.style.fontSize = '40px'
+                const Div706 = document.createElement('div')
+                Div706.className = 'label';
+                Div706.textContent = '706';
+                Div706.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div706.style.color = 'black'
+                Div706.style.fontSize = '20px'
+                const Div707 = document.createElement('div')
+                Div707.className = 'label';
+                Div707.textContent = '707';
+                Div707.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div707.style.color = 'black'
+                Div707.style.fontSize = '20px'
+                const Div708 = document.createElement('div')
+                Div708.className = 'label';
+                Div708.textContent = '708';
+                Div708.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div708.style.color = 'black'
+                Div708.style.fontSize = '20px'
+                const Div709 = document.createElement('div')
+                Div709.className = 'label';
+                Div709.textContent = '709';
+                Div709.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div709.style.color = 'black'
+                Div709.style.fontSize = '20px'
+                const Div711 = document.createElement('div')
+                Div711.className = 'label';
+                Div711.textContent = '711';
+                Div711.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div711.style.color = 'black'
+                Div711.style.fontSize = '20px'
+                const Div713 = document.createElement('div')
+                Div713.className = 'label';
+                Div713.textContent = '713';
+                Div713.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div713.style.color = 'black'
+                Div713.style.fontSize = '20px'
+                const Div716 = document.createElement('div');
+                Div716.className = 'label';
+                Div716.textContent = '716';
+                Div716.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div716.style.color = 'black'
+                Div716.style.fontSize = '20px'
+                const Div717 = document.createElement('div')
+                Div717.className = 'label';
+                Div717.textContent = '717';
+                Div717.style.color = 'black'
+                Div717.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div717.style.fontSize = '20px'
+                const Div720 = document.createElement('div')
+                Div720.className = 'label';
+                Div720.textContent = '720';
+                Div720.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div720.style.color = 'black'
+                Div720.style.fontSize = '20px'
+                const Div721 = document.createElement('div')
+                Div721.className = 'label';
+                Div721.textContent = '721';
+                Div721.style.color = 'black'
+                Div721.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div721.style.fontSize = '20px'
+                const Div722 = document.createElement('div')
+                Div722.className = 'label';
+                Div722.textContent = '722';
+                Div722.style.color = 'black'
+                Div722.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div722.style.fontSize = '20px'
+                const Div723 = document.createElement('div')
+                Div723.className = 'label';
+                Div723.textContent = '723';
+                Div723.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                Div723.style.color = 'black'
+                Div723.style.fontSize = '20px'
+console.log(Div701);
 
-                const earthLabel = new CSS2DObject(earthDiv);
-                earthLabel.position.set(0, 0, 0);
-                earthLabel.center.set(0.5, 1, 0);
-                root2[1].add(earthLabel);
-                earthLabel.layers.set(0);
+                const Label717 = new CSS2DObject(Div717);
+                Label717.position.set(0.3, 0.3, -0.9);
+                Label717.center.set(0, 0, 0);
+                root2[0].children[1].add(Label717);
+                Label717.layers.set(0);
+                const Label713 = new CSS2DObject(Div713);
+                Label713.position.set(-0.3, 0.3, -0.9);
+                Label713.center.set(0, 0, 0);
+                root2[0].children[2].add(Label713);
+                Label713.layers.set(0);
+                const Label711 = new CSS2DObject(Div711);
+                Label711.position.set(-0.6, 0.3, -0.9);
+                Label711.center.set(0, 0, 0);
+                root2[0].children[3].add(Label711);
+                Label711.layers.set(0);
+                const Label709 = new CSS2DObject(Div709);
+                Label709.position.set(-0.9, 0.3, -0.9);
+                Label709.center.set(0, 0, 0);
+                root2[0].children[4].add(Label709);
+                Label709.layers.set(0);
+                const roomLabel = new CSS2DObject(Div716);
+                roomLabel.position.set(-0.3, 0.3, -0.6);
+                roomLabel.center.set(0, 0, 0);
+                root2[0].children[5].add(roomLabel);
+                roomLabel.layers.set(0);
+                const Label708 = new CSS2DObject(Div708);
+                Label708.position.set(-0.7, 0.3, -0.6);
+                Label708.center.set(0, 0, 0);
+                root2[0].children[6].add(Label708);
+                Label708.layers.set(0);
+                const Label720 = new CSS2DObject(Div720);
+                Label720.position.set(0.2, 0.3, -0.6);
+                Label720.center.set(0, 0, 0);
+                root2[0].children[7].add(Label720);
+                Label720.layers.set(0);
+                const Label721 = new CSS2DObject(Div721);
+                Label721.position.set(1.1, 0.3, -0.4);
+                Label721.center.set(0, 0, 0);
+                root2[0].children[8].add(Label721);
+                Label721.layers.set(0);
+                const Label722 = new CSS2DObject(Div722);
+                Label722.position.set(1.1, 0.3, 0);
+                Label722.center.set(0, 0, 0);
+                root2[0].children[9].add(Label722);
+                Label722.layers.set(0);
+                const Label723 = new CSS2DObject(Div723);
+                Label723.position.set(1.1, 0.3, 0.5);
+                Label723.center.set(0, 0, 0);
+                root2[0].children[10].add(Label723);
+                Label723.layers.set(0);
+                const Label701 = new CSS2DObject(Div701);
+                Label701.position.set(-0.2, 0.3, 1.1);
+                Label701.center.set(0, 0, 0);
+                root2[0].children[11].add(Label701);
+                Label701.layers.set(0);
+                const Label706 = new CSS2DObject(Div706);
+                Label706.position.set(-1.2, 0.3, 0.5);
+                Label706.center.set(0, 0, 0);
+                root2[0].children[12].add(Label706);
+                Label706.layers.set(0);
+                const Label707 = new CSS2DObject(Div707);
+                Label707.position.set(-1.2, 0.3, 0);
+                Label707.center.set(0, 0, 0);
+                root2[0].children[13].add(Label707);
+                Label707.layers.set(0);
 
 
-            })
+                
+            },
+            
+        )
         // POS上面有宣告這裡的用途主要為將three.js綁在固定區域 label的為標籤的  
-        small.appendChild(renderer2.domElement);
+        pos2.appendChild(renderer2.domElement);
         labelRenderer = new CSS2DRenderer();
         labelRenderer.setSize(1000, 600);
         labelRenderer.domElement.style.position = 'absolute';
         labelRenderer.domElement.style.pointer = 'none'
         labelRenderer.domElement.style.top = '0px';
-        small.appendChild(labelRenderer.domElement);
+        pos2.appendChild(labelRenderer.domElement);
         // 設置render loop(animate loop)
         function animate2() {
             requestAnimationFrame(animate2);
@@ -763,28 +902,128 @@
         const pointer = new THREE.Vector2();
 
         function onmodelclick(event) {
-
             // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
-            pointer.x = (event.layerX / 1000) * 2 - 1;
-            pointer.y = - (event.layerY / 600) * 2 + 1;
+            pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
+            pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
             raycaster.setFromCamera(pointer, camera2);
             // 获取raycaster直线和所有模型相交的数组集合
             var intersects = raycaster.intersectObjects(scene2.children);
-
             // 點擊到的物件陣列裡是否有系學會教室
             if (intersects.some(function (obj) {
-                return obj.object.name == '系學會教室'
+                return obj.object.material.name == '701'
             })) {
-                location.href = "room.html#2";
-                // window.scrollTo( 0, 1000 );
-                infoModal.close();
+                location.href = "room.html#701";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '706'
+            })) {
+                location.href = "room.html#706";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '707'
+            })) {
+                location.href = "room.html#707";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '708'
+            })) {
+                location.href = "room.html#708";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '709'
+            })) {
+                location.href = "room.html#709";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '711'
+            })) {
+                location.href = "room.html#711";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '713'
+            })) {
+                location.href = "room.html#713";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '716'
+            })) {
+                location.href = "room.html#716";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '717'
+            })) {
+                location.href = "room.html#717";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '720'
+            })) {
+                location.href = "room.html#720";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '721'
+            })) {
+                location.href = "room.html#721";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '722'
+            })) {
+                location.href = "room.html#722";
+            }
+            if (intersects.some(function (obj) {
+                return obj.object.material.name == '723'
+            })) {
+                location.href = "room.html#723";
+            }
+        }
+        let INTERSECTED;
+        function onPointerMove(event) {
+
+            // calculate pointer position in normalized device coordinates
+            // (-1 to +1) for both components
+
+            pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
+            pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
+            // update the picking ray with the camera and pointer position
+            raycaster.setFromCamera(pointer, camera2);
+
+            // calculate objects intersecting the picking ray
+            const intersects = raycaster.intersectObjects(scene2.children);
+
+            if (intersects.length > 0) {
+
+                if (INTERSECTED != intersects[0].object) {
+
+                    if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+
+                    INTERSECTED = intersects[0].object;
+                    INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+                    INTERSECTED.material.emissive.setHex(0xff0000);
+
+                }
+
+            } else {
+
+                if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+
+                INTERSECTED = null;
+
             }
 
-        }
-        small.addEventListener('click', onmodelclick);
-        // 新增控制器
-        const controls = new OrbitControls(camera2, labelRenderer.domElement);
+            renderer2.render(scene2, camera2);
 
+        }
+
+        pos2.addEventListener('pointermove', onPointerMove);
+        pos2.addEventListener('click', onmodelclick);
+        // // 新增控制器
+        const controls = new OrbitControls(camera2, labelRenderer.domElement);
+        function resize() {
+            camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
+            camera2.updateProjectionMatrix();
+            renderer2.setSize(pos2.offsetWidth, pos2.offsetHeight);
+            labelRenderer.setSize(pos2.offsetWidth, pos2.offsetHeight);
+        }
+        pos2.addEventListener('resize', resize)
         animate2();
     </script>
 </body>
