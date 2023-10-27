@@ -705,7 +705,7 @@
         // 新增攝影機
         const camera2= new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         // 設置攝影機位置
-        camera2.position.set(-0, 0, 0);
+        camera2.position.set(-0, 5, 5);
         camera2.rotation.set(-0.5, 0, 0)
 
         // 新增渲染器
@@ -713,17 +713,8 @@
             alpha: true,
             antialias: true,
         });
-        renderer2.setSize(pos2.offsetWidth, pos2.offsetHeight);
-       
+        renderer2.setSize(1000, 600);
 
-
-
-        // 新增燈光
-        // const light = new THREE.AmbientLight(0x404040, 100);
-        // scene.add(light);
-        // const light = new THREE.PointLight(0xff0000, 40, 100);
-        // light.position.set(0, 3, 0);
-        // scene.add(light);
 
         // 新增GLTFLoader
         const loader2 = new GLTFLoader();
@@ -894,14 +885,14 @@ console.log(Div701);
         // POS上面有宣告這裡的用途主要為將three.js綁在固定區域 label的為標籤的  
         pos2.appendChild(renderer2.domElement);
         labelRenderer = new CSS2DRenderer();
-        labelRenderer.setSize(pos2.offsetWidth, pos2.offsetHeight);
+        labelRenderer.setSize(1000, 600);
         labelRenderer.domElement.style.position = 'absolute';
         labelRenderer.domElement.style.pointer = 'none'
         labelRenderer.domElement.style.top = '0px';
         pos2.appendChild(labelRenderer.domElement);
         // 設置render loop(animate loop)
-        function animate() {
-            requestAnimationFrame(animate);
+        function animate2() {
+            requestAnimationFrame(animate2);
             renderer2.render(scene2, camera2);
             labelRenderer.render(scene2, camera2);
         }
@@ -1031,8 +1022,8 @@ console.log(Div701);
             renderer2.setSize(pos2.offsetWidth, pos2.offsetHeight);
             labelRenderer.setSize(pos2.offsetWidth, pos2.offsetHeight);
         }
-        window.addEventListener('resize', resize)
-        animate();
+        pos2.addEventListener('resize', resize)
+        animate2();
     </script>
 </body>
 
