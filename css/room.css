@@ -279,6 +279,11 @@ main {
     }
 }
 
+.intro {
+    display: flex;
+    flex-direction: column;
+}
+
 .intro h3 {
     font-size: 28px;
     background-color: #D9D4CF;
