@@ -244,8 +244,8 @@ menu i {
 }
 
 main {
-    height: calc(100vh - 120px);
     padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 @media (max-width: 990px) {
@@ -323,6 +323,7 @@ main {
 }
 
 footer {
+    width: 100%;
     margin-top: 40px;
     height: 80px;
     border-top: #D9D4CF solid 2px;
@@ -331,6 +332,7 @@ footer {
 
 .footer-box {
     height: 100%;
+    display: flex;
 }
 
 footer h5 {
@@ -350,4 +352,43 @@ footer .line {
     border: #D9D4CF solid 1px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.footer-box-mob {
+    display: none;
+    padding: 6px;
+    gap: 4px;
+}
+
+.footer-box-mob h5 {
+    font-size: 14px;
+}
+
+.footer-mob-up h5 {
+    font-weight: bold;
+}
+
+.footer-box-mob .connect {
+    font-size: 14px;
+    padding: 0px 4px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.footer-box-mob .line {
+    font-size: 20px;
+}
+
+@media (max-width: 816px) {
+    footer {
+        height: 60px;
+    }
+
+.footer-box {
+    display: none;
+}
+
+.footer-box-mob {
+    display: flex;
+}
 }

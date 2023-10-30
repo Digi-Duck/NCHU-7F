@@ -213,6 +213,7 @@ menu {
     left: 0px;
     gap: 10px;
     padding: 8.5px;
+    transition: 0.5s;
 }
 
 menu i {
