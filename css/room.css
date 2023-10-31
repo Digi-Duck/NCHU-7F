@@ -26,7 +26,7 @@ a {
     background-color: #F0E5DE;
     position: fixed;
     display: flex;
-    z-index: 15;
+    z-index: 10;
     animation-name: mask-off;
     animation-delay: 0.5s;
     animation-duration: 0.5s;

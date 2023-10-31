@@ -660,11 +660,13 @@
                 },
                 // 以下為loading相關
                 function (load) {
+                
                     const percent = load.loaded / load.total
                     const loading_text = document.getElementById('loading-text')
                     const loading_fill = document.getElementById('loading-fill')
                     loading_text.innerHTML = Math.floor(percent * 100) + '%'
                     loading_fill.style.width = percent * 282 + "px"
+                    console.log(loading_text);
                 }
             );
         }, 600);
