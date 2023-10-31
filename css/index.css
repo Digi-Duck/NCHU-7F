@@ -1,11 +1,13 @@
 body,
 html {
+    height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Arial, Microsoft JhengHei, PingFang, Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 17px;
     color: #fff;
 }
+
 * {
     box-sizing: border-box;
 }
@@ -14,13 +16,17 @@ a {
     text-decoration: none;
 }
 
+.label {
+    cursor: pointer;
+}
+
 #loading-mask-2 {
     width: 100%;
     height: 100vh;
     background-color: #F0E5DE;
     position: absolute;
     display: flex;
-    z-index: 15;
+    z-index: 18;
     animation-name: mask-off;
     animation-delay: 0.5s;
     animation-duration: 0.5s;
@@ -31,9 +37,9 @@ a {
 @keyframes mask-off {
     0% {
         opacity: 1;
-
+        
     }
-
+    
     100% {
         opacity: 0;
     }
@@ -60,11 +66,11 @@ a {
     0% {
         width: 288px;
     }
-
+    
     50% {
         width: 32px;
     }
-
+    
     100% {
         width: 32px;
     }
@@ -75,9 +81,9 @@ a {
     height: 100vh;
     background-color: #F0E5DE;
     position: absolute;
-    z-index: 15;
+    z-index: 20;
     display: flex;
-
+    
 }
 
 
@@ -113,7 +119,7 @@ nav {
     nav {
         height: 60px;
     }
-
+    
     .nav-box {
         width: 100%;
         justify-content: space-between;
@@ -167,7 +173,7 @@ menu {
 }
 
 @media (max-width: 991px) {
-
+    
     .home-pc,
     .menu-pc {
         display: none;
@@ -184,7 +190,7 @@ menu {
 }
 
 @media (max-width: 990px) {
-
+    
     .home-mobile,
     .menu-mobile {
         display: flex;
@@ -213,6 +219,7 @@ menu {
     left: 0px;
     gap: 10px;
     padding: 8.5px;
+    transition: 0.5s;
 }
 
 menu i {
@@ -231,12 +238,12 @@ menu i {
     menu i {
         font-size: 44px;
     }
-
+    
     .rooms {
         gap: 8px;
         padding: 8.5px 0;
     }
-
+    
     .rooms .room-btn {
         font-size: 18px;
         padding: 5px;
@@ -244,13 +251,20 @@ menu i {
 }
 
 main {
-    height: calc(100vh - 120px);
+    min-height: 100%;
     padding-top: 80px;
+    padding-bottom: 78px;
 }
 
 @media (max-width: 990px) {
     main {
         padding-top: 100px;
+    }
+}
+
+@media (max-width: 816px) {
+    main {
+        padding-bottom: 59px;
     }
 }
 
@@ -262,7 +276,8 @@ main {
 
 .content {
     margin: auto;
-    padding: 6% 13px 0 13px;
+    padding: 6% 13px 40px 13px;
+    position: relative;
 }
 
 @media (min-width: 1084px) {
@@ -291,10 +306,32 @@ main {
 #map {
     height: 640px;
     position: relative;
-
+    
 }
 
-@media(max-width: 816px) {
+.map-mask {
+    /* display: flex; */
+    height: 640px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    position: absolute;
+    right: 12px;
+    z-index: 13;
+}
+
+.map-mask img {
+    width: 80%;
+} 
+
+.map-mask iconify-icon {
+    font-size: 8rem;
+}
+
+.map-mask h6 {
+    line-height: 1.5rem;
+}
+
+@media(max-width: 990px) {
     .intro {
         display: none;
     }
@@ -304,26 +341,27 @@ main {
         display: block;
         background-color: #D9D4CF;
     }
-
+    
     .intro-2 h3 {
         font-size: 28px;
     }
     
-    #map {
+    #map, .map-mask {
         width: 100%;
         height: 450px;
     }
 }
 
 @media(max-width: 393px) {
-    #map {
+    #map, .map-mask {
         width: 372px;
         height: 320px;
     }
 }
 
 footer {
-    margin-top: 40px;
+    width: 100%;
+    margin-top: -78px;
     height: 80px;
     border-top: #D9D4CF solid 2px;
     color: #D9D4CF;
@@ -331,6 +369,7 @@ footer {
 
 .footer-box {
     height: 100%;
+    display: flex;
 }
 
 footer h5 {
@@ -350,4 +389,48 @@ footer .line {
     border: #D9D4CF solid 1px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.footer-box-mob {
+    display: none;
+    padding: 6px;
+    gap: 4px;
+}
+
+.footer-box-mob h5 {
+    font-size: 14px;
+}
+
+.footer-mob-up h5 {
+    font-weight: bold;
+}
+
+.footer-box-mob .connect {
+    font-size: 14px;
+    padding: 0px 4px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.footer-box-mob .line {
+    font-size: 20px;
+}
+
+@media (max-width: 816px) {
+    footer {
+        height: 60px;
+        margin-top: -60px;
+    }
+    
+.footer-box {
+    display: none;
+}
+
+.footer-box-mob {
+    display: flex;
+}
+}
+
+.hide {
+    display: none !important;
 }
