@@ -82,15 +82,18 @@
             <div class="intro col-3 ps-0 pe-3">
                 <h3 class="w-100 py-3 px-1 mb-3 fw-bold text-center rounded-3">綜合大樓-7樓導覽地圖</h3>
                 <div class="intro-text w-100 rounded-3">
-                    放可以直十二畫的是因為，怎麼樣政正式，覺得類的家裡結束：不過只有兩，甚麼想像⋯是一個面還有不要來是。
-                    中感覺好⋯篇類的想生存失，台灣的是不是要的事情感覺都，這個的做過幾專輯的推何相。樣啊而可器人：今天玩家是想要不該，也有一開不再第一收到？我也不部分我，的味是。個太誇日本我也很，是我，一起加，仔細。每天都。比較，要開我記得我也換個師阿可是，偶日本自己一，有說的身影是人應該不，自己性我今天聖誕節，還是進入。
+                    中興大學綜合大樓七樓是一個豐富多元的學術和藝術交匯之地。樓層涵蓋了創新產業學院、陶土教室、電腦教室和系學會辦公室等，為學子們創造多樣的學術和創意環境。<br>
+                    這裡提供了豐富的教育資源和培訓機會，課程著重於開拓多元與創新思考，期許學生們在這個高度競爭的時代中搶得先機。
+                    綜合大樓七樓的各部門共同形成一個繁榮活躍的中心，提供了多樣化的學習和發展機會，豐富了學生的學術和藝術體驗。
                 </div>
             </div>
             <div id="map" class=" col-9 rounded-3 p-0"></div>
             <div class="intro-2 w-100 rounded-3">
                 <h3 class="w-100 pt-4 px-1 fw-bold text-center">綜合大樓-7樓導覽地圖</h3>
                 <div class="intro-text w-100">
-                    放可以直十二畫的是因為，怎麼樣政正式，覺得類的家裡結束：不過只有兩，甚麼想像⋯是一個面還有不要來是。
+                    中興大學綜合大樓七樓是一個豐富多元的學術和藝術交匯之地。樓層涵蓋了創新產業學院、陶土教室、電腦教室和系學會辦公室等，為學子們創造多樣的學術和創意環境。<br>
+                    這裡提供了豐富的教育資源和培訓機會，課程著重於開拓多元與創新思考，期許學生們在這個高度競爭的時代中搶得先機。
+                    綜合大樓七樓的各部門共同形成一個繁榮活躍的中心，提供了多樣化的學習和發展機會，豐富了學生的學術和藝術體驗。
                 </div>
             </div>
         </div>
@@ -303,13 +306,13 @@
 
                 // loading真假切換
                 const loading = document.getElementById('loading-mask');
-                loading.style.display = 'none';
+                loading.classList.add('hide');
                 const loadinganime = document.getElementById('loading-mask-2')
                 const loadinganime2 = document.getElementById('loading-bar-2')
                 loadinganime.style.animationPlayState = 'running'
                 loadinganime2.style.animationPlayState = 'running'
                 setTimeout(() => {
-                    loadinganime.style.display = 'none';
+                    loadinganime.classList.add('hide');
                 }, 1500);
             },
             // 以下為loading相關
