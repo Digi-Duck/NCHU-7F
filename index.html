@@ -87,7 +87,37 @@
                     綜合大樓七樓的各部門共同形成一個繁榮活躍的中心，提供了多樣化的學習和發展機會，豐富了學生的學術和藝術體驗。
                 </div>
             </div>
-            <div id="map" class=" col-9 rounded-3 p-0"></div>
+            <div class="map-mask col-9 p-5 row rounded-3 justify-content-center align-items-center">
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <img src="./img/rotate.png" alt="" class="py-5">
+                    <h3>旋轉</h3>
+                    <h6 class="text-center">
+                        在地圖附近空白處長按滑鼠左鍵<br>
+                        可拖曳旋轉畫面
+                    </h6>
+                </div>
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <iconify-icon icon="fluent:cursor-hover-20-filled" class="pt-3 pb-4"></iconify-icon>
+                    <h3>點擊</h3>
+                    <h6 class="text-center">
+                        房間變色為被選取狀態<br>
+                        可點擊跳轉
+                    </h6>
+                </div>
+                <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+                    <iconify-icon icon="iconoir:mouse-scroll-wheel" class="pt-3 pb-4"></iconify-icon>
+                    <h3>點擊</h3>
+                    <h6 class="text-center">
+                        房間變色為被選取狀態<br>
+                        可點擊跳轉
+                    </h6>
+                </div>
+                <div class="col text-center">
+                <h4 >點擊空白處開始操作</h4>
+                </div>
+            </div>
+            <div id="map" class="col-9 rounded-3 p-0">
+            </div>
             <div class="intro-2 w-100 rounded-3">
                 <h3 class="w-100 pt-4 px-1 fw-bold text-center">綜合大樓-7樓導覽地圖</h3>
                 <div class="intro-text w-100">
@@ -201,6 +231,11 @@
                 }
             }
         };
+
+        const mapMask = document.querySelector('.map-mask')
+        mapMask.addEventListener('click', () => {
+            mapMask.classList.add('hide')
+        })
     </script>
     <script type="module">
         import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
