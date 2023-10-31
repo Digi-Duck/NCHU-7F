@@ -588,84 +588,104 @@
         const room2loader = new GLTFLoader();
         const room3loader = new GLTFLoader();
         let mixer, cameramixer;
-        setTimeout(() => [
+
+        setTimeout(() => {
+            room2loader.load(
+                './model/room2.glb', (object) => {
+                    scene.add(object.scene)
+                }
+            )
+
+        }, 900)
+
+        setTimeout(() => {
+            room3loader.load(
+                './model/room3.glb', (object) => {
+                    scene.add(object.scene)
+                }
+            )
+        }, 900)
+
+        setTimeout(() => {
+            animeloader.load('./model/anime.glb', (object) => {
+                scene.add(object.scene)
+                let mixer = new THREE.AnimationMixer(object.scene)
+                let clips = object.animations
+                let clip = object.animations[5]
+                let action = mixer.clipAction(clip)
+                action.play()
+
+                console.log(clips);
+
+                // clips.forEach((clip) => {
+                //     const action = mixer.clipAction(clip)
+                //     action.play()
+                // })
+
+
+            })
+
+        }, 900)
+
+        setTimeout(() => {
+            cameraloader.load(
+                './model/camera.glb',
+                (object) => {
+                    let all = object.scene
+                    let anime = object.animations
+                    scene.add(all)
+                    camera = object.cameras[0];
+
+                    // clip這邊的才是控制物體動畫的關鍵
+                    const Cameraclip = object.animations[0];
+
+                    // 這個mixer是要找到這個檔案的全部物體
+                    let cameramixer = new THREE.AnimationMixer(all);
+                    //把CLIP變成能用action操作
+                    const cameraaction = cameramixer.clipAction(Cameraclip);
+                    createAnimation(cameramixer, cameraaction, Cameraclip);
+
+                    // 啟動特定的action
+                    cameraaction.play();
+
+                }
+
+            );
+        }, 900)
+
+        setTimeout(() => {
             roomloader.load(
-                './model/room1.glb', (object) => {
+                './model/room1.glb',
+                (object) => {
                     scene.add(object.scene)
 
+                    // loading真假切換
                     const loading = document.getElementById('loading-mask');
-                    loading.style.display = 'none';
+                    loading.classList.add('hide');
                     const loadinganime = document.getElementById('loading-mask-2')
                     const loadinganime2 = document.getElementById('loading-bar-2')
                     loadinganime.style.animationPlayState = 'running'
                     loadinganime2.style.animationPlayState = 'running'
                     setTimeout(() => {
-                        loadinganime.style.display = 'none';
-                    }, 500);
+                        loadinganime.classList.add('hide');
+                    }, 1500);
                 },
+                // 以下為loading相關
                 function (load) {
-
                     const percent = load.loaded / load.total
                     const loading_text = document.getElementById('loading-text')
                     const loading_fill = document.getElementById('loading-fill')
+                    console.log(percent);
                     loading_text.innerHTML = Math.floor(percent * 100) + '%'
                     loading_fill.style.width = percent * 282 + "px"
                 }
             )
 
-        ], 800)
-
-        room2loader.load(
-            './model/room2.glb', (object) => {
-                scene.add(object.scene)
-            }
-        )
-        room3loader.load(
-            './model/room3.glb', (object) => {
-                scene.add(object.scene)
-            }
-        )
-        animeloader.load('./model/anime.glb', (object) => {
-            scene.add(object.scene)
-            let mixer = new THREE.AnimationMixer(object.scene)
-            let clips = object.animations
-            let clip = object.animations[5]
-            let action = mixer.clipAction(clip)
-            action.play()
-
-            console.log(clips);
-
-            // clips.forEach((clip) => {
-            //     const action = mixer.clipAction(clip)
-            //     action.play()
-            // })
+        }, 900)
 
 
-        })
-        cameraloader.load(
-            './model/camera.glb',
-            (object) => {
-                let all = object.scene
-                let anime = object.animations
-                scene.add(all)
-                camera = object.cameras[0];
 
-                // clip這邊的才是控制物體動畫的關鍵
-                const Cameraclip = object.animations[0];
 
-                // 這個mixer是要找到這個檔案的全部物體
-                let cameramixer = new THREE.AnimationMixer(all);
-                //把CLIP變成能用action操作
-                const cameraaction = cameramixer.clipAction(Cameraclip);
-                createAnimation(cameramixer, cameraaction, Cameraclip);
-
-                // 啟動特定的action
-                cameraaction.play();
-            }
-
-        );
-
-       
 
         const clock = new THREE.Clock();
 
@@ -710,7 +730,7 @@
             const delta = clock.getDelta()
             if (mixer) mixer.update(delta);
             if (camera) renderer.render(scene, camera);
-            if(cameramixer)cameramixer.update(delta)
+            if (cameramixer) cameramixer.update(delta)
         }
         const main = document.querySelector('main');
         const body = document.querySelector('body');
@@ -825,9 +845,9 @@
                     label.layers.set(0);
                 })
 
-               
+
             },
-        
+
         )
         // POS上面有宣告這裡的用途主要為將three.js綁在固定區域 label的為標籤的  
         pos2.appendChild(renderer2.domElement);

@@ -26,7 +26,7 @@ a {
     background-color: #F0E5DE;
     position: fixed;
     display: flex;
-    z-index: 10;
+    z-index: 18;
     animation-name: mask-off;
     animation-delay: 0.5s;
     animation-duration: 0.5s;
@@ -491,4 +491,7 @@ footer .line {
     .footer-box-mob {
         display: flex;
     }
+}
+.hide {
+    display: none !important;
 }
