@@ -81,7 +81,7 @@ a {
     height: 100vh;
     background-color: #F0E5DE;
     position: absolute;
-    z-index: 15;
+    z-index: 20;
     display: flex;
 
 }

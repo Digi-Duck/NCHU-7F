@@ -661,10 +661,10 @@
                     scene.add(object.scene)
 
                     // loading真假切換
-                    const loading = document.getElementById('loading-mask');
-                    loading.classList.add('hide');
                     const loadinganime = document.getElementById('loading-mask-2')
                     const loadinganime2 = document.getElementById('loading-bar-2')
+                    const loading = document.getElementById('loading-mask');
+                    loading.classList.add('hide');
                     loadinganime.style.animationPlayState = 'running'
                     loadinganime2.style.animationPlayState = 'running'
                     setTimeout(() => {
