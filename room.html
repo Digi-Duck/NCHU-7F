@@ -588,7 +588,8 @@
         const room2loader = new GLTFLoader();
         const room3loader = new GLTFLoader();
         let mixer, cameramixer;
-
+        // 這邊的clips=[]很重要對於一堆動畫而言
+        let clips = []
         setTimeout(() => {
             room2loader.load(
                 './model/room2.glb', (object) => {
@@ -609,18 +610,17 @@
         setTimeout(() => {
             animeloader.load('./model/anime.glb', (object) => {
                 scene.add(object.scene)
-                let mixer = new THREE.AnimationMixer(object.scene)
-                let clips = object.animations
-                let clip = object.animations[5]
-                let action = mixer.clipAction(clip)
-                action.play()
+                mixer = new THREE.AnimationMixer(object.scene)
+                clips = object.animations
+
+
 
                 console.log(clips);
 
-                // clips.forEach((clip) => {
-                //     const action = mixer.clipAction(clip)
-                //     action.play()
-                // })
+                clips.forEach((clip) => {
+                    const action = mixer.clipAction(clip)
+                    action.play()
+                })
 
 
             })
@@ -647,6 +647,7 @@
 
                     // 啟動特定的action
                     cameraaction.play();
+                    console.log(cameraaction);
 
                 }
 
