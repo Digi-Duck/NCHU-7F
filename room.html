@@ -566,10 +566,13 @@
     <script type="module">
         import * as THREE from 'three';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+       
 
 
         // 新增場景
         const scene = new THREE.Scene();
+       
         // 新增攝影機
         let camera;
         // 將<canvas>加入HTML(map)
@@ -580,6 +583,8 @@
             alpha: true
         });
         pos.appendChild(renderer.domElement);
+        const pmremGenerator = new THREE.PMREMGenerator(renderer);
+        scene.environment = pmremGenerator.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
         // 新增FBXLoader
         const cameraloader = new GLTFLoader();
