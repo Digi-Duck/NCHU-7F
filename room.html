@@ -23,12 +23,6 @@
                 <h5 id="loading-text">0%</h5>
             </div>
         </div>
-        <div id="loading-mask-2" class="align-items-center justify-content-center">
-            <div id="loading">
-                <div id="loading-bar-2"></div>
-                <h5>100%</h5>
-            </div>
-        </div>
         <nav>
             <div class=" container-lg px-4 h-100">
                 <div class="nav-box m-auto gap-3 d-flex align-items-center h-100">
@@ -606,31 +600,10 @@
         // 這邊的clips=[]很重要對於一堆動畫而言
         let clips = []
         setTimeout(() => {
-            room2loader.load(
-                './model/room2.glb', (object) => {
-                    scene.add(object.scene)
-                }
-            )
-
-        }, 900)
-
-        setTimeout(() => {
-            room3loader.load(
-                './model/room3.glb', (object) => {
-                    scene.add(object.scene)
-                }
-            )
-        }, 900)
-
-        setTimeout(() => {
             animeloader.load('./model/anime.glb', (object) => {
                 scene.add(object.scene)
                 mixer = new THREE.AnimationMixer(object.scene)
                 clips = object.animations
-
-
-
-                console.log(clips);
 
                 clips.forEach((clip) => {
                     const action = mixer.clipAction(clip)
@@ -639,10 +612,6 @@
 
 
             })
-
-        }, 900)
-
-        setTimeout(() => {
             cameraloader.load(
                 './model/camera.glb',
                 (object) => {
@@ -667,24 +636,25 @@
                 }
 
             );
-        }, 900)
-
-        setTimeout(() => {
+            room3loader.load(
+                './model/room3.glb', (object) => {
+                    scene.add(object.scene)
+                }
+            )
+            room2loader.load(
+                './model/room2.glb', (object) => {
+                    scene.add(object.scene)
+                }
+            )       
             roomloader.load(
                 './model/room1.glb',
                 (object) => {
                     scene.add(object.scene)
 
-                    // loading真假切換
-                    const loadinganime = document.getElementById('loading-mask-2')
-                    const loadinganime2 = document.getElementById('loading-bar-2')
+
                     const loading = document.getElementById('loading-mask');
                     loading.classList.add('hide');
-                    loadinganime.style.animationPlayState = 'running'
-                    loadinganime2.style.animationPlayState = 'running'
-                    setTimeout(() => {
-                        loadinganime.classList.add('hide');
-                    }, 1500);
+                   
                 },
                 // 以下為loading相關
                 function (load) {
@@ -697,7 +667,7 @@
                 }
             )
 
-        }, 900)
+        }, 800)
 
 
 
