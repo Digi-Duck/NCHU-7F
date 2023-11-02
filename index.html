@@ -273,7 +273,7 @@
                 const root2 = root.children
                 scene.add(all)
 
-                // 以下為標籤寫在LOAD裡不然綁不到
+                // 以下為標籤寫在LOAD裡不然會因為不同步綁不到
                 const Div701 = document.createElement('div');
                 const Div706 = document.createElement('div');
                 const Div707 = document.createElement('div');
@@ -378,12 +378,12 @@
         const pointer = new THREE.Vector2();
 
         function onmodelclick(event) {
-            // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos.offsetHeight) * 2 + 1;
             raycaster.setFromCamera(pointer, camera);
 
-            // 获取raycaster直线和所有模型相交的数组集合
+            // raycaster獲得模型裡的物件
             var intersects = raycaster.intersectObjects(scene.children);
 
             if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
@@ -392,12 +392,12 @@
             }
         }
         function pointermove(event) {
-            // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos.offsetHeight) * 2 + 1;
             raycaster.setFromCamera(pointer, camera);
 
-            // 获取raycaster直线和所有模型相交的数组集合
+            // raycaster獲得模型裡的物件
             var intersects = raycaster.intersectObjects(scene.children);
 
             if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
@@ -409,17 +409,14 @@
         let INTERSECTED;
         function onPointerMove(event) {
 
-            // calculate pointer position in normalized device coordinates
-            // (-1 to +1) for both components
-
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos.offsetHeight) * 2 + 1;
-            // update the picking ray with the camera and pointer position
             raycaster.setFromCamera(pointer, camera);
 
-            // calculate objects intersecting the picking ray
+            
             const intersects = raycaster.intersectObjects(scene.children);
-
+            // 讓滑鼠指到的東西變色,沒指到的會回到原本狀態
             if (intersects.length > 0) {
 
                 if (INTERSECTED != intersects[0].object) {

@@ -644,7 +644,7 @@
                 './model/room2.glb', (object) => {
                     scene.add(object.scene)
                 }
-            )       
+            )
             roomloader.load(
                 './model/room1.glb',
                 (object) => {
@@ -653,7 +653,7 @@
 
                     const loading = document.getElementById('loading-mask');
                     loading.classList.add('hide');
-                   
+
                 },
                 // 以下為loading相關
                 function (load) {
@@ -764,7 +764,7 @@
                 const root2 = root.children
                 scene2.add(all)
 
-                // 以下為標籤寫在LOAD裡不然綁不到
+                // 以下為標籤寫在LOAD裡不然會因為不同步綁不到
                 const Div701 = document.createElement('div');
                 const Div706 = document.createElement('div');
                 const Div707 = document.createElement('div');
@@ -853,11 +853,11 @@
         const pointer = new THREE.Vector2();
 
         function onmodelclick(event) {
-            // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
             raycaster.setFromCamera(pointer, camera2);
-            // 获取raycaster直线和所有模型相交的数组集合
+            // raycaster獲得模型裡的物件
             var intersects = raycaster.intersectObjects(scene2.children);
             // 點擊到的物件陣列裡是否有系學會教室
             if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
@@ -866,38 +866,32 @@
             }
         }
         function pointermove(event) {
-            // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
             raycaster.setFromCamera(pointer, camera2);
 
-            // 获取raycaster直线和所有模型相交的数组集合
+            // raycaster獲得模型裡的物件
             var intersects = raycaster.intersectObjects(scene2.children);
 
             if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
-                pos2.style.cursor ='pointer';
-            }else {
-                pos2.style.cursor ='auto';
+                pos2.style.cursor = 'pointer';
+            } else {
+                pos2.style.cursor = 'auto';
             }
         }
         let INTERSECTED;
         function onPointerMove(event) {
-
-            // calculate pointer position in normalized device coordinates
-            // (-1 to +1) for both components
-
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
-            // update the picking ray with the camera and pointer position
             raycaster.setFromCamera(pointer, camera2);
-
-            // calculate objects intersecting the picking ray
             const intersects = raycaster.intersectObjects(scene2.children);
-
+            // 讓滑鼠指到的東西變色,沒指到的會回到原本狀態
             if (intersects.length > 0) {
 
                 if (INTERSECTED != intersects[0].object) {
-                    
+
 
                     if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
                     INTERSECTED = intersects[0].object;
