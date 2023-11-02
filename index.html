@@ -388,6 +388,22 @@
 
             if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
                 location.href = `room.html#r${intersects[0].object.material.name}`;
+                pos.style.cursor ='pointer';
+            }
+        }
+        function pointermove(event) {
+            // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+            pointer.x = (event.layerX / pos.offsetWidth) * 2 - 1;
+            pointer.y = - (event.layerY / pos.offsetHeight) * 2 + 1;
+            raycaster.setFromCamera(pointer, camera);
+
+            // 获取raycaster直线和所有模型相交的数组集合
+            var intersects = raycaster.intersectObjects(scene.children);
+
+            if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
+                pos.style.cursor ='pointer';
+            }else {
+                pos.style.cursor ='auto';
             }
         }
         let INTERSECTED;
@@ -409,7 +425,6 @@
                 if (INTERSECTED != intersects[0].object) {
 
                     if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
-
                     INTERSECTED = intersects[0].object;
                     INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
                     INTERSECTED.material.emissive.setHex(0xff0000);
@@ -427,7 +442,7 @@
             renderer.render(scene, camera);
 
         }
-
+        pos.addEventListener('pointermove', pointermove);
         pos.addEventListener('pointermove', onPointerMove);
         pos.addEventListener('click', onmodelclick);
         // // 新增控制器

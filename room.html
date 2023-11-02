@@ -866,6 +866,21 @@
                 infoModal.close();
             }
         }
+        function pointermove(event) {
+            // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+            pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
+            pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
+            raycaster.setFromCamera(pointer, camera2);
+
+            // 获取raycaster直线和所有模型相交的数组集合
+            var intersects = raycaster.intersectObjects(scene2.children);
+
+            if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
+                pos2.style.cursor ='pointer';
+            }else {
+                pos2.style.cursor ='auto';
+            }
+        }
         let INTERSECTED;
         function onPointerMove(event) {
 
@@ -883,8 +898,10 @@
             if (intersects.length > 0) {
 
                 if (INTERSECTED != intersects[0].object) {
+                    
 
                     if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+                    document.body.style.cursor ='pointer';
 
                     INTERSECTED = intersects[0].object;
                     INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
@@ -903,7 +920,7 @@
             renderer2.render(scene2, camera2);
 
         }
-
+        pos2.addEventListener('pointermove', pointermove);
         pos2.addEventListener('pointermove', onPointerMove);
         pos2.addEventListener('click', onmodelclick);
         // // 新增控制器
