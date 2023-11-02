@@ -290,6 +290,10 @@ main {
     background-color: #D9D4CF;
 }
 
+#r708 .intro-2 h3 {
+    font-size: 20px;
+}
+
 .intro-text {
     text-align: justify;
     padding: 30px 40px;
