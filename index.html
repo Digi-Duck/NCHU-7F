@@ -257,6 +257,7 @@
 
         // 新增渲染器
         const renderer = new THREE.WebGLRenderer({
+            // antialias抗鋸齒 alpha為去背
             alpha: true,
             antialias: true,
         });
@@ -364,6 +365,7 @@
         labelRenderer = new CSS2DRenderer();
         labelRenderer.setSize(pos.offsetWidth, pos.offsetHeight);
         labelRenderer.domElement.style.position = 'absolute';
+        // labelrender的pointer如果不設為NONE的話會點不到模型
         labelRenderer.domElement.style.pointer = 'none'
         labelRenderer.domElement.style.top = '0px';
         pos.appendChild(labelRenderer.domElement);

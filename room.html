@@ -572,9 +572,6 @@
         import * as THREE from 'three';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-
-
-
         // 新增場景
         const scene = new THREE.Scene();
 
@@ -584,12 +581,13 @@
         const pos = document.getElementById('map');
         // 新增渲染器
         const renderer = new THREE.WebGLRenderer({
+            // antialias抗鋸齒 alpha為去背
             antialias: true,
             alpha: true
         });
         pos.appendChild(renderer.domElement);
 
-        // 新增FBXLoader
+        // 新增GLTFLoader
         const cameraloader = new GLTFLoader();
         const animeloader = new GLTFLoader();
         const roomloader = new GLTFLoader();
@@ -839,6 +837,7 @@
         labelRenderer = new CSS2DRenderer();
         labelRenderer.setSize(1000, 600);
         labelRenderer.domElement.style.position = 'absolute';
+        // labelrender的pointer如果不設為NONE的話會點不到模型
         labelRenderer.domElement.style.pointer = 'none'
         labelRenderer.domElement.style.top = '0px';
         pos2.appendChild(labelRenderer.domElement);
