@@ -81,6 +81,7 @@
                 </div>
             </div>
         </nav>
+        <div class="mark align-items-end justify-content-center" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><iconify-icon icon="material-symbols:stat-minus-2" width="100" height="100"></iconify-icon></div>
         <main class="container-lg">
             <section class="target"></section>
             <div id="r723" class="first-room content row">
@@ -517,6 +518,7 @@
         const rightBtn = document.querySelector('.right-btn');
         const view = document.querySelector('.menu-view');
         const rooms = document.querySelector('.rooms');
+        const mark = document.querySelector('.mark');
 
         rightBtn.addEventListener('click', scrollRight);
         leftBtn.addEventListener('click', scrollLeft);
@@ -561,6 +563,12 @@
                 }
             }
         };
+        function drag(params) {
+            mark.classList.add('hide')
+            
+        }
+
+        mark.addEventListener("click",drag )
         // ==================== 小地圖 ====================
 
         let btn = document.querySelectorAll(".show")

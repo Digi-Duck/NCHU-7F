@@ -19,6 +19,15 @@ a {
     height: auto !important;
     padding: 0 !important;
 }
+.mark{
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    position: absolute;
+    display: none;
+    background-color: transparent
+    
+}
 
 #loading-mask-2 {
     width: 100%;
@@ -359,7 +368,16 @@ main {
     #map {
         height: 320px;
     }
-
+   
+    .mark{
+        width: 100%;
+        height: 100vh;
+        z-index: 10;
+        position: absolute;
+        display: flex;
+        background-color: transparent
+        
+    }
     .last-room {
         padding-bottom: 120px;
     }
