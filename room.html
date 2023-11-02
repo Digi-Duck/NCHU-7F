@@ -635,7 +635,6 @@
 
                     // 啟動特定的action
                     cameraaction.play();
-                    console.log(cameraaction);
 
                 }
 
@@ -674,7 +673,7 @@
                     const percent = load.loaded / load.total
                     const loading_text = document.getElementById('loading-text')
                     const loading_fill = document.getElementById('loading-fill')
-                    console.log(percent);
+
                     loading_text.innerHTML = Math.floor(percent * 100) + '%'
                     loading_fill.style.width = percent * 282 + "px"
                 }
@@ -730,7 +729,7 @@
             const delta = clock.getDelta()
             if (mixer) mixer.update(delta);
             if (camera) renderer.render(scene, camera);
-            if (cameramixer) cameramixer.update(delta)
+
         }
         const main = document.querySelector('main');
         const body = document.querySelector('body');
