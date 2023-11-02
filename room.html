@@ -23,6 +23,13 @@
                 <h5 id="loading-text">0%</h5>
             </div>
         </div>
+        <div id="loading-mask-2" class="align-items-center justify-content-center">
+            <div id="loading">
+                <div id="loading-bar-2"></div>
+                <h5>100%</h5>
+            </div>
+
+        </div>
         <nav>
             <div class=" container-lg px-4 h-100">
                 <div class="nav-box m-auto gap-3 d-flex align-items-center h-100">
@@ -74,6 +81,7 @@
                 </div>
             </div>
         </nav>
+        <div class="mark align-items-end justify-content-center" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><iconify-icon icon="material-symbols:stat-minus-2" width="100" height="100"></iconify-icon></div>
         <main class="container-lg">
             <section class="target"></section>
             <div id="r723" class="first-room content row">
@@ -510,6 +518,7 @@
         const rightBtn = document.querySelector('.right-btn');
         const view = document.querySelector('.menu-view');
         const rooms = document.querySelector('.rooms');
+        const mark = document.querySelector('.mark');
 
         rightBtn.addEventListener('click', scrollRight);
         leftBtn.addEventListener('click', scrollLeft);
@@ -554,6 +563,12 @@
                 }
             }
         };
+        function drag(params) {
+            mark.classList.add('hide')
+            
+        }
+
+        mark.addEventListener("click",drag )
         // ==================== 小地圖 ====================
 
         let btn = document.querySelectorAll(".show")
@@ -572,9 +587,6 @@
         import * as THREE from 'three';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-
-
-
         // 新增場景
         const scene = new THREE.Scene();
 
@@ -584,12 +596,13 @@
         const pos = document.getElementById('map');
         // 新增渲染器
         const renderer = new THREE.WebGLRenderer({
+            // antialias抗鋸齒 alpha為去背
             antialias: true,
             alpha: true
         });
         pos.appendChild(renderer.domElement);
 
-        // 新增FBXLoader
+        // 新增GLTFLoader
         const cameraloader = new GLTFLoader();
         const animeloader = new GLTFLoader();
         const roomloader = new GLTFLoader();
@@ -630,7 +643,6 @@
 
                     // 啟動特定的action
                     cameraaction.play();
-                    console.log(cameraaction);
 
                 }
 
@@ -644,7 +656,7 @@
                 './model/room2.glb', (object) => {
                     scene.add(object.scene)
                 }
-            )       
+            )
             roomloader.load(
                 './model/room1.glb',
                 (object) => {
@@ -653,21 +665,31 @@
 
                     const loading = document.getElementById('loading-mask');
                     loading.classList.add('hide');
-                   
+                    const loadinganime = document.getElementById('loading-mask-2')
+                    const loadinganime2 = document.getElementById('loading-bar-2')
+                    setTimeout(() => {
+                        loadinganime.style.animationPlayState = 'running'
+                        loadinganime2.style.animationPlayState = 'running'
+                        setTimeout(() => {
+                            loadinganime.classList.add('hide');
+                        },1500)
+                    }, 100)
+
                 },
                 // 以下為loading相關
                 function (load) {
                     const percent = load.loaded / load.total
                     const loading_text = document.getElementById('loading-text')
                     const loading_fill = document.getElementById('loading-fill')
-                    console.log(percent);
+
                     loading_text.innerHTML = Math.floor(percent * 100) + '%'
                     loading_fill.style.width = percent * 282 + "px"
                 }
             )
 
-        }, 800)
 
+        }, 800)
+       
 
 
 
@@ -715,7 +737,7 @@
             const delta = clock.getDelta()
             if (mixer) mixer.update(delta);
             if (camera) renderer.render(scene, camera);
-            if (cameramixer) cameramixer.update(delta)
+
         }
         const main = document.querySelector('main');
         const body = document.querySelector('body');
@@ -742,7 +764,7 @@
         // 新增攝影機
         const camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         // 設置攝影機位置
-        camera2.position.set(1, 5, 5);
+        camera2.position.set(0, 7, 5);
         camera2.rotation.set(-0.5, 0, 0)
 
         // 新增渲染器
@@ -764,7 +786,7 @@
                 const root2 = root.children
                 scene2.add(all)
 
-                // 以下為標籤寫在LOAD裡不然綁不到
+                // 以下為標籤寫在LOAD裡不然會因為不同步綁不到
                 const Div701 = document.createElement('div');
                 const Div706 = document.createElement('div');
                 const Div707 = document.createElement('div');
@@ -792,6 +814,8 @@
                     item.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
                     item.style.color = 'black'
                     item.style.fontSize = '20px'
+                    item.style.fontWeight = 'bold'
+                    item.style.webkitTextStroke = '0.3px white'
                 }))
 
                 const Label701 = new CSS2DObject(Div701);
@@ -839,6 +863,7 @@
         labelRenderer = new CSS2DRenderer();
         labelRenderer.setSize(1000, 600);
         labelRenderer.domElement.style.position = 'absolute';
+        // labelrender的pointer如果不設為NONE的話會點不到模型
         labelRenderer.domElement.style.pointer = 'none'
         labelRenderer.domElement.style.top = '0px';
         pos2.appendChild(labelRenderer.domElement);
@@ -853,11 +878,11 @@
         const pointer = new THREE.Vector2();
 
         function onmodelclick(event) {
-            // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
             raycaster.setFromCamera(pointer, camera2);
-            // 获取raycaster直线和所有模型相交的数组集合
+            // raycaster獲得模型裡的物件
             var intersects = raycaster.intersectObjects(scene2.children);
             // 點擊到的物件陣列裡是否有系學會教室
             if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
@@ -865,26 +890,35 @@
                 infoModal.close();
             }
         }
-        let INTERSECTED;
-        function onPointerMove(event) {
-
-            // calculate pointer position in normalized device coordinates
-            // (-1 to +1) for both components
-
+        function pointermove(event) {
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
-            // update the picking ray with the camera and pointer position
             raycaster.setFromCamera(pointer, camera2);
 
-            // calculate objects intersecting the picking ray
-            const intersects = raycaster.intersectObjects(scene2.children);
+            // raycaster獲得模型裡的物件
+            var intersects = raycaster.intersectObjects(scene2.children);
 
+            if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
+                pos2.style.cursor = 'pointer';
+            } else {
+                pos2.style.cursor = 'auto';
+            }
+        }
+        let INTERSECTED;
+        function onPointerMove(event) {
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
+            pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
+            pointer.y = - (event.layerY / pos2.offsetHeight) * 2 + 1;
+            raycaster.setFromCamera(pointer, camera2);
+            const intersects = raycaster.intersectObjects(scene2.children);
+            // 讓滑鼠指到的東西變色,沒指到的會回到原本狀態
             if (intersects.length > 0) {
 
                 if (INTERSECTED != intersects[0].object) {
 
-                    if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
 
+                    if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
                     INTERSECTED = intersects[0].object;
                     INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
                     INTERSECTED.material.emissive.setHex(0xff0000);
@@ -902,7 +936,7 @@
             renderer2.render(scene2, camera2);
 
         }
-
+        pos2.addEventListener('pointermove', pointermove);
         pos2.addEventListener('pointermove', onPointerMove);
         pos2.addEventListener('click', onmodelclick);
         // // 新增控制器

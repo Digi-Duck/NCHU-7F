@@ -310,11 +310,12 @@
         // 新增攝影機
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         // 設置攝影機位置
-        camera.position.set(-0, 5, 5);
+        camera.position.set(-0, 6, 5);
         camera.rotation.set(-0.5, 0, 0)
 
         // 新增渲染器
         const renderer = new THREE.WebGLRenderer({
+            // antialias抗鋸齒 alpha為去背
             alpha: true,
             antialias: true,
         });
@@ -331,7 +332,7 @@
                 const root2 = root.children
                 scene.add(all)
 
-                // 以下為標籤寫在LOAD裡不然綁不到
+                // 以下為標籤寫在LOAD裡不然會因為不同步綁不到
                 const Div701 = document.createElement('div');
                 const Div706 = document.createElement('div');
                 const Div707 = document.createElement('div');
@@ -359,6 +360,8 @@
                     item.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
                     item.style.color = 'black'
                     item.style.fontSize = '20px'
+                    item.style.fontWeight = 'bold'
+                    item.style.webkitTextStroke = '0.3px white'
                 }))
 
                 const Label701 = new CSS2DObject(Div701);
@@ -422,6 +425,7 @@
         labelRenderer = new CSS2DRenderer();
         labelRenderer.setSize(pos.offsetWidth, pos.offsetHeight);
         labelRenderer.domElement.style.position = 'absolute';
+        // labelrender的pointer如果不設為NONE的話會點不到模型
         labelRenderer.domElement.style.pointer = 'none'
         labelRenderer.domElement.style.top = '0px';
         pos.appendChild(labelRenderer.domElement);
@@ -436,38 +440,50 @@
         const pointer = new THREE.Vector2();
 
         function onmodelclick(event) {
-            // 将鼠标位置归一化为设备坐标。x 和 y 方向的取值范围是 (-1 to +1)
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos.offsetHeight) * 2 + 1;
             raycaster.setFromCamera(pointer, camera);
 
-            // 获取raycaster直线和所有模型相交的数组集合
+            // raycaster獲得模型裡的物件
             var intersects = raycaster.intersectObjects(scene.children);
 
             if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
                 location.href = `room.html#r${intersects[0].object.material.name}`;
+                pos.style.cursor ='pointer';
+            }
+        }
+        function pointermove(event) {
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
+            pointer.x = (event.layerX / pos.offsetWidth) * 2 - 1;
+            pointer.y = - (event.layerY / pos.offsetHeight) * 2 + 1;
+            raycaster.setFromCamera(pointer, camera);
+
+            // raycaster獲得模型裡的物件
+            var intersects = raycaster.intersectObjects(scene.children);
+
+            if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
+                pos.style.cursor ='pointer';
+            }else {
+                pos.style.cursor ='auto';
             }
         }
         let INTERSECTED;
         function onPointerMove(event) {
 
-            // calculate pointer position in normalized device coordinates
-            // (-1 to +1) for both components
-
+            // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos.offsetWidth) * 2 - 1;
             pointer.y = - (event.layerY / pos.offsetHeight) * 2 + 1;
-            // update the picking ray with the camera and pointer position
             raycaster.setFromCamera(pointer, camera);
 
-            // calculate objects intersecting the picking ray
+            
             const intersects = raycaster.intersectObjects(scene.children);
-
+            // 讓滑鼠指到的東西變色,沒指到的會回到原本狀態
             if (intersects.length > 0) {
 
                 if (INTERSECTED != intersects[0].object) {
 
                     if (INTERSECTED) INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
-
                     INTERSECTED = intersects[0].object;
                     INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
                     INTERSECTED.material.emissive.setHex(0xff0000);
@@ -485,7 +501,7 @@
             renderer.render(scene, camera);
 
         }
-
+        pos.addEventListener('pointermove', pointermove);
         pos.addEventListener('pointermove', onPointerMove);
         pos.addEventListener('click', onmodelclick);
         // // 新增控制器
