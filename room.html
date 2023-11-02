@@ -23,6 +23,13 @@
                 <h5 id="loading-text">0%</h5>
             </div>
         </div>
+        <div id="loading-mask-2" class="align-items-center justify-content-center">
+            <div id="loading">
+                <div id="loading-bar-2"></div>
+                <h5>100%</h5>
+            </div>
+
+        </div>
         <nav>
             <div class=" container-lg px-4 h-100">
                 <div class="nav-box m-auto gap-3 d-flex align-items-center h-100">
@@ -651,6 +658,15 @@
 
                     const loading = document.getElementById('loading-mask');
                     loading.classList.add('hide');
+                    const loadinganime = document.getElementById('loading-mask-2')
+                    const loadinganime2 = document.getElementById('loading-bar-2')
+                    setTimeout(() => {
+                        loadinganime.style.animationPlayState = 'running'
+                        loadinganime2.style.animationPlayState = 'running'
+                        setTimeout(() => {
+                            loadinganime.classList.add('hide');
+                        },1500)
+                    }, 100)
 
                 },
                 // 以下為loading相關
@@ -664,8 +680,9 @@
                 }
             )
 
-        }, 800)
 
+        }, 800)
+       
 
 
 
