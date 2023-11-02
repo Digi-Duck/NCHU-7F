@@ -227,6 +227,10 @@ menu i {
     background-color: #FFFFFF;
     color: #7C7877;
 }
+.room-btn:hover{
+    background-color: #ABD0CE;
+    color: #FFFFFF;
+}
 
 @media (max-width: 540px) {
     menu i {
@@ -459,6 +463,11 @@ footer .line {
     border: #D9D4CF solid 1px;
     border-radius: 4px;
     cursor: pointer;
+}
+.connect:hover {
+    opacity: 0.7;
+    color: rgb(185, 115, 115);
+    
 }
 
 .footer-box-mob {
