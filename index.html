@@ -50,31 +50,31 @@
                     <div class="menu-view rounded-2">
                         <div class="rooms d-flex">
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r701'">ROOM701</button>
+                                onclick="location.href='room.html#r701'">701</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r706'">ROOM706</button>
+                                onclick="location.href='room.html#r706'">706</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r707'">ROOM707</button>
+                                onclick="location.href='room.html#r707'">707</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r708'">ROOM708</button>
+                                onclick="location.href='room.html#r708'">708</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r709'">ROOM709</button>
+                                onclick="location.href='room.html#r709'">709</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r711'">ROOM711</button>
+                                onclick="location.href='room.html#r711'">711</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r713'">ROOM713</button>
+                                onclick="location.href='room.html#r713'">713</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r716'">ROOM716</button>
+                                onclick="location.href='room.html#r716'">716</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r717'">ROOM717</button>
+                                onclick="location.href='room.html#r717'">717</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r720'">ROOM720</button>
+                                onclick="location.href='room.html#r720'">720</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r721'">ROOM721</button>
+                                onclick="location.href='room.html#r721'">721</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r722'">ROOM722</button>
+                                onclick="location.href='room.html#r722'">722</button>
                             <button type="button" class="room-btn fw-bold"
-                                onclick="location.href='room.html#r723'">ROOM723</button>
+                                onclick="location.href='room.html#r723'">723</button>
                         </div>
                     </div>
                     <i class="right-btn bi bi-caret-right-fill"></i>
@@ -249,43 +249,26 @@
         leftBtn.addEventListener('click', scrollLeft);
 
         function scrollRight() {
-            const allLength = 148.7 * 13 + 8.5;
+            const allLength = 75.7 * 13 + 8.5;
             const viewLength = view.clientWidth;
             const leftMove = Math.abs(parseInt(window.getComputedStyle(rooms, null).left));// 取得rooms left的值
             if (allLength < viewLength) return;
-            if (viewLength <= 452) {
-                if (leftMove + viewLength + 104 * 3 >= 1352) {
-                    // 右到底的時候
-                    rooms.style.left = '-' + (1352 - viewLength) + 'px';
-                } else {
-                    rooms.style.left = '-' + (leftMove + (104 * 3)) + 'px'
-                }
+            if (leftMove + viewLength + 75.7 * 3 >= allLength) {
+                rooms.style.left = '-' + (allLength - viewLength) + 'px';
             } else {
-                if (leftMove + viewLength + 148.7 * 3 >= allLength) {
-                    rooms.style.left = '-' + (allLength - viewLength) + 'px';
-                } else {
-                    rooms.style.left = '-' + (leftMove + (148.7 * 3)) + 'px'
-                }
+                rooms.style.left = '-' + (leftMove + (75.7 * 3)) + 'px'
             }
         };
 
         function scrollLeft() {
-            const allLength = 148.7 * 13 + 8.5;
+            const allLength = 75.7 * 13 + 8.5;
             const viewLength = view.clientWidth;
             const leftMove = Math.abs(parseInt(window.getComputedStyle(rooms, null)?.left));// 取得rooms left的值
             if (allLength < viewLength) return;
-            if (viewLength <= 452) {
-                if (leftMove + viewLength - (104 * 3) < viewLength) {
-                    rooms.style.left = '0px';
-                } else {
-                    rooms.style.left = '-' + (leftMove - (104 * 3)) + 'px'
-                }
+            if (leftMove + viewLength - (75.7 * 3) < viewLength) {
+                rooms.style.left = '0px';
             } else {
-                if (leftMove + viewLength - (148.7 * 3) < viewLength) {
-                    rooms.style.left = '0px';
-                } else {
-                    rooms.style.left = '-' + (leftMove - (148.7 * 3)) + 'px'
-                }
+                rooms.style.left = '-' + (leftMove - (75.7 * 3)) + 'px'
             }
         };
 

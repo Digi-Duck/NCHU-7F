@@ -1,10 +1,17 @@
+@font-face {
+    font-family: 'jf-openhuninn';
+    src: local("jf-openhuninn"),
+        url('../font/jf-openhuninn-2.0.woff') format("woff"),
+        url('../font/jf-openhuninn-2.0.ttf') format("opentype"),
+        url('../font/jf-openhuninn-2.0.eot') format("embedded-opentype");
+}
+
 body,
 html {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Arial, Microsoft JhengHei, PingFang, Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 17px;
+    font-family: 'Nunito', 'jf-openhuninn', sans-serif,'Microsoft JhengHei','PingFang';    font-size: 17px;
     color: #fff;
 }
 
@@ -148,14 +155,12 @@ menu {
 
 .home-btn {
     background-color: #ABD0CE;
-    font-family: 'Nunito', sans-serif;
 }
 
 .menu-btn {
     background-color: #7C7877;
     transition: 0.8s;
     cursor: pointer;
-    font-family: 'Nunito', sans-serif;
 }
 
 .home-pc,
@@ -234,13 +239,11 @@ menu i {
     }
     
     .rooms {
-        gap: 8px;
         padding: 8.5px 0;
     }
     
-    .rooms .room-btn {
-        font-size: 18px;
-        padding: 5px;
+    .rooms {
+        padding: 8.5px 0;
     }
 }
 
