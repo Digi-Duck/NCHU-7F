@@ -82,7 +82,7 @@
                 </div>
             </div>
         </nav>
-        <div class="mark align-items-end justify-content-center">
+        <div class="mark">
             <iconify-icon icon="material-symbols:stat-minus-2" width="80" height="80"></iconify-icon>
         </div>
         <main class="container-lg">
@@ -100,7 +100,6 @@
                     <dialog id="infoModal">
                         <button id="close"><iconify-icon icon="ic:baseline-close"></iconify-icon></button>
                         <div id="small"></div>
-
                     </dialog>
                 </div>
                 <div id="map" class="col-9 rounded-3 p-0">
@@ -522,7 +521,6 @@
         const rightBtn = document.querySelector('.right-btn');
         const view = document.querySelector('.menu-view');
         const rooms = document.querySelector('.rooms');
-        const mark = document.querySelector('.mark');
 
         rightBtn.addEventListener('click', scrollRight);
         leftBtn.addEventListener('click', scrollLeft);
@@ -567,14 +565,8 @@
                 }
             }
         };
-        function drag(params) {
-            mark.classList.add('hide')
 
-        }
-
-        mark.addEventListener("click", drag)
         // ==================== 小地圖 ====================
-
         let btn = document.querySelectorAll(".show")
         let infoModal = document.querySelector("#infoModal");
         let close = document.querySelector("#close");
@@ -694,10 +686,6 @@
 
         }, 800)
 
-
-
-
-
         const clock = new THREE.Clock();
 
         function createAnimation(cameramixer, cameraaction, Cameraclip) {
@@ -731,6 +719,17 @@
                     time: Cameraclip.duration,
                     ease: "none",
                 })
+                .to('.mark', {
+                    scrollTrigger: {
+                        scrollTrigger: '.mark',
+                        start: "top top",
+                        end: "+=500",
+                        scrub: true,
+                    },
+                    css: { opacity: 0 },
+                    ease: "none",
+                }
+                )
         }
 
         const mapView = document.querySelector('.map-view')
@@ -776,7 +775,7 @@
             alpha: true,
             antialias: true,
         });
-   
+
 
 
         // 新增GLTFLoader
@@ -865,7 +864,7 @@
         // POS上面有宣告這裡的用途主要為將three.js綁在固定區域 label的為標籤的  
         pos2.appendChild(renderer2.domElement);
         labelRenderer = new CSS2DRenderer();
-      
+
         labelRenderer.domElement.style.position = 'absolute';
         // labelrender的pointer如果不設為NONE的話會點不到模型
         labelRenderer.domElement.style.pointer = 'none'
@@ -946,23 +945,23 @@
         // // 新增控制器
         const controls = new OrbitControls(camera2, labelRenderer.domElement);
         function resize() {
-            if(window.innerWidth >= 1100){
+            if (window.innerWidth >= 1100) {
                 camera2.updateProjectionMatrix();
                 labelRenderer.setSize(1000, 600);
                 renderer2.setSize(1000, 600);
-               
+
                 camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
             }
-            if(window.innerWidth <= 1099){
+            if (window.innerWidth <= 1099) {
                 camera2.updateProjectionMatrix();
                 labelRenderer.setSize(550, 300);
                 renderer2.setSize(550, 300);
-                
+
                 camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
             }
-            
-        
-           
+
+
+
         }
         resize()
         window.addEventListener('resize', resize)
