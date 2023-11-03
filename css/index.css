@@ -148,12 +148,14 @@ menu {
 
 .home-btn {
     background-color: #ABD0CE;
+    font-family: 'Nunito', sans-serif;
 }
 
 .menu-btn {
     background-color: #7C7877;
     transition: 0.8s;
     cursor: pointer;
+    font-family: 'Nunito', sans-serif;
 }
 
 .home-pc,
@@ -394,8 +396,12 @@ main {
 }
 
 @media(max-width: 393px) {
-    #map, .map-mask-mob {
+    #map {
         width: 372px;
+        height: 320px;
+    }
+
+    .map-mask-mob {
         height: 320px;
     }
 }
