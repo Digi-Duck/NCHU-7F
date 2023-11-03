@@ -15,18 +15,39 @@ a {
     text-decoration: none;
 }
 
-.pin-spacer{
+.pin-spacer {
     height: auto !important;
     padding: 0 !important;
 }
-.mark{
+
+#loading-mask {
     width: 100%;
     height: 100vh;
-    z-index: 10;
-    position: absolute;
-    display: none;
-    background-color: transparent
-    
+    background-color: #F0E5DE;
+    position: fixed;
+    z-index: 20;
+    display: flex;
+
+}
+
+#loading-bar {
+    width: 288px;
+    height: 32px;
+    border: 3px solid #7C7877;
+    border-radius: 30px;
+}
+
+#loading-fill {
+    width: 0px;
+    height: 100%;
+    background-color: #ABD0CE;
+    border-radius: 30px;
+}
+
+#loading h5 {
+    color: #7C7877;
+    font-size: 14px;
+    padding: 10px 0px;
 }
 
 #loading-mask-2 {
@@ -65,12 +86,6 @@ a {
     animation-play-state: paused;
 }
 
-#loading h5 {
-    color: #7C7877;
-    font-size: 14px;
-    padding: 10px 0px;
-}
-
 @keyframes loading-done {
     0% {
         width: 288px;
@@ -83,36 +98,6 @@ a {
     100% {
         width: 32px;
     }
-}
-
-#loading-mask {
-    width: 100%;
-    height: 100vh;
-    background-color: #F0E5DE;
-    position: fixed;
-    z-index: 20;
-    display: flex;
-
-}
-
-#loading-bar {
-    width: 288px;
-    height: 32px;
-    border: 3px solid #7C7877;
-    border-radius: 30px;
-}
-
-#loading-fill {
-    width: 0px;
-    height: 100%;
-    background-color: #ABD0CE;
-    border-radius: 30px;
-}
-
-#loading-text {
-    color: #7C7877;
-    font-size: 14px;
-    padding: 10px 0px;
 }
 
 nav {
@@ -165,7 +150,8 @@ menu {
     }
 }
 
-.menu-btn, .home-btn {
+.menu-btn,
+.home-btn {
     background-color: #7C7877;
     transition: 0.8s;
     cursor: pointer;
@@ -177,6 +163,7 @@ menu {
 }
 
 @media (max-width: 991px) {
+
     .home-pc,
     .menu-pc {
         display: none;
@@ -236,7 +223,8 @@ menu i {
     background-color: #FFFFFF;
     color: #7C7877;
 }
-.room-btn:hover{
+
+.room-btn:hover {
     background-color: #ABD0CE;
     color: #FFFFFF;
 }
@@ -254,6 +242,35 @@ menu i {
     .rooms .room-btn {
         font-size: 18px;
         padding: 5px;
+    }
+}
+
+.mark {
+    display: none;
+    background-color: #ABD0CE;
+    color: #fff;
+    border-radius: 50%;
+    z-index: 10;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.gradient-mask {
+    display: none;
+    height: 100vh;
+    position: fixed;
+    background-image: linear-gradient(to top, white 20%, transparent 70%);
+}
+
+@media (max-width: 816px) {
+    .mark {
+        display: flex;
+    }
+    
+    .gradient-mask {
+        display: flex;
     }
 }
 
@@ -354,7 +371,7 @@ main {
         width: 100%;
         align-content: end;
     }
-    
+
     .first-room {
         align-content: space-between;
     }
@@ -368,16 +385,7 @@ main {
     #map {
         height: 320px;
     }
-   
-    .mark{
-        width: 100%;
-        height: 100vh;
-        z-index: 10;
-        position: absolute;
-        display: flex;
-        background-color: transparent
-        
-    }
+
     .last-room {
         padding-bottom: 120px;
     }
@@ -392,13 +400,18 @@ main {
     margin-top: 50px;
     background-color: #D9D4CF;
     cursor: pointer;
+    transition: 0.3s;
 }
-.mini-map:hover{
-   opacity: 0.7;
-}
-.mini-map-2:hover{
+
+.mini-map:hover {
     opacity: 0.7;
- }
+    transition: 0.3s;
+}
+
+.mini-map-2:hover {
+    opacity: 0.7;
+    transition: 0.3s;
+}
 
 .intro-box {
     margin-top: 30px;
@@ -406,13 +419,13 @@ main {
     align-items: end;
 }
 
-@media  (min-width: 675px) {
+@media (min-width: 675px) {
     .intro-box {
         align-items: start;
     }
 }
 
-@media  (max-width: 816px) {    
+@media (max-width: 816px) {
     .intro-box {
         display: flex;
     }
@@ -447,9 +460,16 @@ dialog::backdrop {
     margin-left: 970px;
     border-radius: 5px;
     color: #7C7877;
-    border:solid #7C7877;
+    border: solid #7C7877;
     text-align: center;
-    padding:2px 0px 0px 0px;
+    padding: 2px 0px 0px 0px;
+    transition: 0.3s;
+}
+
+#close:hover {
+    background-color: #7C7877;
+    color: #D9D4CF;
+    transition: 0.3s;
 }
 
 footer {
@@ -482,6 +502,7 @@ footer .line {
     border-radius: 4px;
     cursor: pointer;
 }
+
 .connect:hover {
     opacity: 0.7;
     color: rgb(185, 115, 115);
@@ -514,9 +535,9 @@ footer .line {
 }
 
 @media (max-width: 816px) {
-        footer {
-            height: 60px;
-        }
+    footer {
+        height: 60px;
+    }
 
     .footer-box {
         display: none;
