@@ -776,7 +776,7 @@
             alpha: true,
             antialias: true,
         });
-        renderer2.setSize(1000, 600);
+   
 
 
         // 新增GLTFLoader
@@ -865,7 +865,7 @@
         // POS上面有宣告這裡的用途主要為將three.js綁在固定區域 label的為標籤的  
         pos2.appendChild(renderer2.domElement);
         labelRenderer = new CSS2DRenderer();
-        labelRenderer.setSize(1000, 600);
+      
         labelRenderer.domElement.style.position = 'absolute';
         // labelrender的pointer如果不設為NONE的話會點不到模型
         labelRenderer.domElement.style.pointer = 'none'
@@ -946,12 +946,26 @@
         // // 新增控制器
         const controls = new OrbitControls(camera2, labelRenderer.domElement);
         function resize() {
-            camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
-            camera2.updateProjectionMatrix();
-            renderer2.setSize(pos2.offsetWidth, pos2.offsetHeight);
-            labelRenderer.setSize(pos2.offsetWidth, pos2.offsetHeight);
+            if(window.innerWidth >= 1100){
+                camera2.updateProjectionMatrix();
+                labelRenderer.setSize(1000, 600);
+                renderer2.setSize(1000, 600);
+               
+                camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
+            }
+            if(window.innerWidth <= 1099){
+                camera2.updateProjectionMatrix();
+                labelRenderer.setSize(550, 300);
+                renderer2.setSize(550, 300);
+                
+                camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
+            }
+            
+        
+           
         }
-        pos2.addEventListener('resize', resize)
+        resize()
+        window.addEventListener('resize', resize)
         animate2();
     </script>
 </body>

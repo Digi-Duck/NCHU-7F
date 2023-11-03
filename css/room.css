@@ -437,7 +437,21 @@ main {
         display: flex;
     }
 }
-
+@media (max-width : 1099px) {
+    #small{
+        width: 500px !important;
+        height: 300px !important;
+    }
+    dialog {
+        border: none;
+        box-shadow: 0 2px 6px #ccc;
+        border-radius: 10px;
+        height: 400px !important;
+        width: 600px !important;
+        flex-wrap: wrap;
+    }
+    
+}
 #small {
     height: 600px;
     width: 1000px;
@@ -464,7 +478,6 @@ dialog::backdrop {
 #close {
     width: 30px;
     height: 30px;
-    margin-left: 970px;
     border-radius: 5px;
     color: #7C7877;
     border: solid #7C7877;
