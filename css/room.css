@@ -268,9 +268,15 @@ menu i {
     .mark {
         display: flex;
     }
-    
+
     .gradient-mask {
         display: flex;
+    }
+}
+
+@media (max-width: 500px) {
+    .gradient-mask {
+        background-image: linear-gradient(to top, white 40%, transparent 70%);
     }
 }
 
@@ -391,7 +397,8 @@ main {
     }
 }
 
-.mini-map {
+.mini-map,
+.mini-map-2 {
     border-radius: 8px;
     width: 100%;
     background-size: contain;
@@ -403,11 +410,11 @@ main {
     transition: 0.3s;
 }
 
-.mini-map:hover {
-    opacity: 0.7;
-    transition: 0.3s;
+.mini-map-2 {
+    padding: 10px;
 }
 
+.mini-map:hover,
 .mini-map-2:hover {
     opacity: 0.7;
     transition: 0.3s;
