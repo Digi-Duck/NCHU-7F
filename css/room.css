@@ -485,7 +485,7 @@ footer .line {
 .connect:hover {
     opacity: 0.7;
     color: rgb(185, 115, 115);
-    
+    border: rgb(185, 115, 115) solid 1px;
 }
 
 .footer-box-mob {
@@ -526,6 +526,7 @@ footer .line {
         display: flex;
     }
 }
+
 .hide {
     display: none !important;
 }
