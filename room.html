@@ -571,18 +571,7 @@
             }
         };
 
-        // ==================== 小地圖 ====================
-        let btn = document.querySelectorAll(".show")
-        let infoModal = document.querySelector("#infoModal");
-        let close = document.querySelector("#close");
-        btn.forEach(function name(btn) {
-            btn.addEventListener("click", function () {
-                infoModal.showModal();
-            })
-        });
-        close.addEventListener("click", function () {
-            infoModal.close();
-        })
+
     </script>
     <script type="module">
         import * as THREE from 'three';
@@ -759,6 +748,7 @@
         resize();
         animate();
         window.addEventListener('resize', resize)
+
     </script>
     <script type="module">
         import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
@@ -877,12 +867,7 @@
         labelRenderer.domElement.style.pointer = 'none'
         labelRenderer.domElement.style.top = '0px';
         pos2.appendChild(labelRenderer.domElement);
-        // 設置render loop(animate loop)
-        function animate2() {
-            requestAnimationFrame(animate2);
-            renderer2.render(scene2, camera2);
-            labelRenderer.render(scene2, camera2);
-        }
+
         // 定位滑鼠位置所需要的宣告
         const raycaster = new THREE.Raycaster();
         const pointer = new THREE.Vector2();
@@ -952,30 +937,49 @@
         // // 新增控制器
         const controls = new OrbitControls(camera2, labelRenderer.domElement);
         function resize() {
+            console.log(123);
             if (window.innerWidth >= 1100) {
                 camera2.position.set(0, 7, 5);
-                camera2.updateProjectionMatrix();
                 labelRenderer.setSize(1000, 600);
                 renderer2.setSize(1000, 600);
-
                 camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
-            }
-            if (window.innerWidth <= 1099) {
+
+            } else {
                 camera2.position.set(0, 6, 5);
-                camera2.updateProjectionMatrix();
                 labelRenderer.setSize(550, 300);
                 renderer2.setSize(550, 300);
-
                 camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
             }
+            camera2.updateProjectionMatrix();
+        }
+        // 設置render loop(animate loop)
+        function animate2() {
+            requestAnimationFrame(animate2);
+            renderer2.render(scene2, camera2);
+            labelRenderer.render(scene2, camera2);
+        }
+        animate2();
+        resize();
+        window.addEventListener('resize', resize);
+        // ==================== 小地圖 ====================
+        let btn = document.querySelectorAll(".show")
+        let infoModal = document.querySelector("#infoModal");
+        let close = document.querySelector("#close");
+        //   此處為非同步 async的function完成後 才會往下執行
+        btn.forEach((b) => {
+            b.addEventListener("click", function () {
+                openModal();
+                resize();
+            })
+        });
 
-
-
+        async function openModal() {
+            infoModal.showModal();
         }
 
-        resize();
-        animate2();
-        window.addEventListener('resize', resize);
+        close.addEventListener("click", function () {
+            infoModal.close();
+        })
     </script>
 </body>
 
