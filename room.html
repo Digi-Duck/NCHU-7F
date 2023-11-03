@@ -948,6 +948,7 @@
         const controls = new OrbitControls(camera2, labelRenderer.domElement);
         function resize() {
             if (window.innerWidth >= 1100) {
+                camera2.position.set(0, 7, 5);
                 camera2.updateProjectionMatrix();
                 labelRenderer.setSize(1000, 600);
                 renderer2.setSize(1000, 600);
@@ -955,6 +956,7 @@
                 camera2.aspect = pos2.offsetWidth / pos2.offsetHeight;
             }
             if (window.innerWidth <= 1099) {
+                camera2.position.set(0, 6, 5);
                 camera2.updateProjectionMatrix();
                 labelRenderer.setSize(550, 300);
                 renderer2.setSize(550, 300);
@@ -965,12 +967,10 @@
 
 
         }
+        
         resize();
         animate2();
         window.addEventListener('resize', resize);
-       
-        
-       
     </script>
 </body>
 
