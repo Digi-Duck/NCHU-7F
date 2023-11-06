@@ -794,7 +794,7 @@
                 DivArr.forEach(((item) => {
                     item.textContent = `${nameAdd()}`;
                     item.className = 'label';
-                    item.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
+                    item.style.fontFamily = 'Nunito', 'jf-openhuninn', 'sans-serif','Microsoft JhengHei','PingFang';
                     item.style.color = 'black'
                     item.style.fontSize = '20px'
                     item.style.fontWeight = 'bold'
@@ -920,7 +920,6 @@
         // // 新增控制器
         const controls = new OrbitControls(camera2, labelRenderer.domElement);
         function resize() {
-            console.log(123);
             if (window.innerWidth >= 1100) {
                 camera2.position.set(0, 7, 5);
                 labelRenderer.setSize(1000, 600);

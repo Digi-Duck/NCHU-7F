@@ -249,14 +249,14 @@
         leftBtn.addEventListener('click', scrollLeft);
 
         function scrollRight() {
-            const allLength = 75.7 * 13 + 8.5;
+            const allLength = 75.7 * 13 + 8.5 * 3;
             const viewLength = view.clientWidth;
             const leftMove = Math.abs(parseInt(window.getComputedStyle(rooms, null).left));// 取得rooms left的值
             if (allLength < viewLength) return;
             if (leftMove + viewLength + 75.7 * 3 >= allLength) {
                 rooms.style.left = '-' + (allLength - viewLength) + 'px';
             } else {
-                rooms.style.left = '-' + (leftMove + (75.7 * 3)) + 'px'
+                rooms.style.left = '-' + (leftMove + (75.7 * 3 + 8.5)) + 'px'
             }
         };
 
@@ -346,11 +346,11 @@
                 DivArr.forEach(((item) => {
                     item.textContent = `${nameAdd()}`;
                     item.className = 'label';
-                    item.style.fontFamily = 'Arial, Microsoft JhengHei, PingFang, Segoe UI';
-                    item.style.color = 'black'
-                    item.style.fontSize = '20px'
-                    item.style.fontWeight = 'bold'
-                    item.style.webkitTextStroke = '0.3px white'
+                    item.style.fontFamily = 'Nunito', 'jf-openhuninn', 'sans-serif','Microsoft JhengHei','PingFang';
+                    item.style.color = 'black';
+                    item.style.fontSize = '20px';
+                    item.style.fontWeight = 'bold';
+                    item.style.webkitTextStroke = '0.3px white';
                 }))
 
                 const Label701 = new CSS2DObject(Div701);
