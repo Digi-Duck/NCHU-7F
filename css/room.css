@@ -609,3 +609,11 @@ footer .line {
 .hide {
     display: none !important;
 }
+#ping701, #ping706, #ping707, #ping708, #ping709, #ping711, #ping713, #ping716, #ping717, #ping720, #ping721, #ping722, #ping723 {
+    content: url('https://api.iconify.design/teenyicons/pin-solid.svg');
+    width: 40px;
+    display: none;
+}
+.show{
+    display: block !important;
+}
