@@ -833,6 +833,8 @@
                         z: 1.1,
                         pin: pin701,
                         mini: mini701,
+                        piny: 0.6,
+                        pinx: -0.2
                     },
                     {
                         el: Div706,
@@ -841,6 +843,8 @@
                         z: 0.5,
                         pin: pin706,
                         mini: mini706,
+                        piny: 0.6,
+                        pinx: -1.2
                     },
                     {
                         el: Div707,
@@ -849,6 +853,8 @@
                         z: 0,
                         pin: pin707,
                         mini: mini707,
+                        piny: 0.6,
+                        pinx: -1.2
                     },
                     {
                         el: Div708,
@@ -857,6 +863,8 @@
                         z: -0.6,
                         pin: pin708,
                         mini: mini708,
+                        piny: 0.6,
+                        pinx: -0.7
                     },
                     {
                         el: Div709,
@@ -865,6 +873,8 @@
                         z: -0.9,
                         pin: pin709,
                         mini: mini709,
+                        piny: 0.6,
+                        pinx: -0.9
                     },
                     {
                         el: Div711,
@@ -873,6 +883,8 @@
                         z: -0.9,
                         pin: pin711,
                         mini: mini711,
+                        piny: 0.6,
+                        pinx: -0.6
                     },
                     {
                         el: Div713,
@@ -881,6 +893,8 @@
                         z: -0.9,
                         pin: pin713,
                         mini: mini713,
+                        piny: 0.6,
+                        pinx: -0.3
                     },
                     {
                         el: Div716,
@@ -889,6 +903,8 @@
                         z: -0.6,
                         pin: pin716,
                         mini: mini716,
+                        piny: 0.6,
+                        pinx: -0.3
                     },
                     {
                         el: Div717,
@@ -897,6 +913,8 @@
                         z: -0.9,
                         pin: pin717,
                         mini: mini717,
+                        piny: 0.6,
+                        pinx: 0.3
                     },
                     {
                         el: Div720,
@@ -905,6 +923,8 @@
                         z: -0.6,
                         pin: pin720,
                         mini: mini720,
+                        piny: 0.6,
+                        pinx: 0.2
                     },
                     {
                         el: Div721,
@@ -913,6 +933,8 @@
                         z: -0.4,
                         pin: pin721,
                         mini: mini721,
+                        piny: 0.5,
+                        pinx: 1.1
                     },
                     {
                         el: Div722,
@@ -921,6 +943,8 @@
                         z: 0,
                         pin: pin722,
                         mini: mini722,
+                        piny: 0.4,
+                        pinx: 1.1
                     },
                     {
                         el: Div723,
@@ -929,6 +953,8 @@
                         z: 0.5,
                         pin: pin723,
                         mini: mini723,
+                        piny: 0.4,
+                        pinx: 1.1
                     }
                 ]
 
@@ -946,7 +972,7 @@
                     item.pin.classList.add('pin')
                     item.pin.innerHTML = '<iconify-icon icon="mdi:rabbit-variant"></iconify-icon>'
                     var mark = new CSS2DObject(item.pin);
-                    mark.position.set(item.x, item.y + 0.3, item.z);
+                    mark.position.set(item.pinx, item.piny, item.z);
                     mark.center.set(0, 0, 0);
                     root2[0].children[(index + 1)].add(mark);
                     mark.layers.set(0);
