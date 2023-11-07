@@ -750,9 +750,9 @@
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+        const roomAll = ['701', '706', '707', '708', '709', '711', '713', '716', '717', '720', '721', '722', '723']
+
         const pos2 = document.getElementById('small');
-        const roomAll = ["701", "706", "707", "708", "709", "711", "713", "716", "717", "720", "721", "722", "723"]
-        const pingAll = ["ping701", "ping706", "ping707", "ping708", "ping709", "ping711", "ping713", "ping716", "ping717", "ping720", "ping721", "ping722", "ping723"]
         let labelRenderer;
         // 新增場景
         const scene2 = new THREE.Scene();
@@ -768,8 +768,6 @@
             antialias: true,
         });
 
-
-
         // 新增GLTFLoader
         const loader2 = new GLTFLoader();
         // 匯入物件(路徑, 加載完成後呼叫函數
@@ -781,7 +779,23 @@
                 const root2 = root.children
                 scene2.add(all)
 
+                // 不能直接selectAll因為排序不對
+                const mini701 = document.getElementById('mini701')
+                const mini706 = document.getElementById('mini706')  
+                const mini707 = document.getElementById('mini707') 
+                const mini708 = document.getElementById('mini708') 
+                const mini709 = document.getElementById('mini709') 
+                const mini711 = document.getElementById('mini711') 
+                const mini713 = document.getElementById('mini713') 
+                const mini716 = document.getElementById('mini716') 
+                const mini717 = document.getElementById('mini717') 
+                const mini720 = document.getElementById('mini720') 
+                const mini721 = document.getElementById('mini721') 
+                const mini722 = document.getElementById('mini722') 
+                const mini723 = document.getElementById('mini723')
+
                 // 以下為標籤寫在LOAD裡不然會因為不同步綁不到
+                // 各房間名稱標示
                 const Div701 = document.createElement('div');
                 const Div706 = document.createElement('div');
                 const Div707 = document.createElement('div');
@@ -795,180 +809,153 @@
                 const Div721 = document.createElement('div');
                 const Div722 = document.createElement('div');
                 const Div723 = document.createElement('div');
-                const DivArr = [Div701, Div706, Div707, Div708, Div709, Div711, Div713, Div716, Div717, Div720, Div721, Div722, Div723]
 
-                let roomNum = -1;
-                function nameAdd() {
-                    roomNum = roomNum + 1;
-                    return roomAll[roomNum];
-                }
+                // 所在位置指示pin
+                const pin701 = document.createElement('div')
+                const pin706 = document.createElement('div')
+                const pin707 = document.createElement('div')
+                const pin708 = document.createElement('div')
+                const pin709 = document.createElement('div')
+                const pin711 = document.createElement('div')
+                const pin713 = document.createElement('div')
+                const pin716 = document.createElement('div')
+                const pin717 = document.createElement('div')
+                const pin720 = document.createElement('div')
+                const pin721 = document.createElement('div')
+                const pin722 = document.createElement('div')
+                const pin723 = document.createElement('div')
 
-                DivArr.forEach(((item) => {
-                    item.textContent = `${nameAdd()}`;
-                    item.className = 'label';
-                    item.style.fontFamily = 'Nunito', 'jf-openhuninn', 'sans-serif','Microsoft JhengHei','PingFang';
-                    item.style.color = 'black'
-                    item.style.fontSize = '20px'
-                    item.style.fontWeight = 'bold'
-                    item.style.webkitTextStroke = '0.3px white'
-                }))
+                const roomArr = [
+                    {
+                        el: Div701,
+                        x: -0.2,
+                        y: 0.3,
+                        z: 1.1,
+                        pin: pin701,
+                        mini: mini701,
+                    },
+                    {
+                        el: Div706,
+                        x: -1.2,
+                        y: 0.3,
+                        z: 0.5,
+                        pin: pin706,
+                        mini: mini706,
+                    },
+                    {
+                        el: Div707,
+                        x: -1.2,
+                        y: 0.3,
+                        z: 0,
+                        pin: pin707,
+                        mini: mini707,
+                    },
+                    {
+                        el: Div708,
+                        x: -0.7,
+                        y: 0.3,
+                        z: -0.6,
+                        pin: pin708,
+                        mini: mini708,
+                    },
+                    {
+                        el: Div709,
+                        x: -0.9,
+                        y: 0.3,
+                        z: -0.9,
+                        pin: pin709,
+                        mini: mini709,
+                    },
+                    {
+                        el: Div711,
+                        x: -0.6,
+                        y: 0.3,
+                        z: -0.9,
+                        pin: pin711,
+                        mini: mini711,
+                    },
+                    {
+                        el: Div713,
+                        x: -0.3,
+                        y: 0.3,
+                        z: -0.9,
+                        pin: pin713,
+                        mini: mini713,
+                    },
+                    {
+                        el: Div716,
+                        x: -0.3,
+                        y: 0.3,
+                        z: -0.6,
+                        pin: pin716,
+                        mini: mini716,
+                    },
+                    {
+                        el: Div717,
+                        x: 0.3,
+                        y: 0.3,
+                        z: -0.9,
+                        pin: pin717,
+                        mini: mini717,
+                    },
+                    {
+                        el: Div720,
+                        x: 0.2,
+                        y: 0.3,
+                        z: -0.6,
+                        pin: pin720,
+                        mini: mini720,
+                    },
+                    {
+                        el: Div721,
+                        x: 1.1,
+                        y: 0.3,
+                        z: -0.4,
+                        pin: pin721,
+                        mini: mini721,
+                    },
+                    {
+                        el: Div722,
+                        x: 1.1,
+                        y: 0.3,
+                        z: 0,
+                        pin: pin722,
+                        mini: mini722,
+                    },
+                    {
+                        el: Div723,
+                        x: 1.1,
+                        y: 0.3,
+                        z: 0.5,
+                        pin: pin723,
+                        mini: mini723,
+                    }
+                ]
 
-                const Label701 = new CSS2DObject(Div701);
-                const Label706 = new CSS2DObject(Div706);
-                const Label707 = new CSS2DObject(Div707);
-                const Label708 = new CSS2DObject(Div708);
-                const Label709 = new CSS2DObject(Div709);
-                const Label711 = new CSS2DObject(Div711);
-                const Label713 = new CSS2DObject(Div713);
-                const Label716 = new CSS2DObject(Div716);
-                const Label717 = new CSS2DObject(Div717);
-                const Label720 = new CSS2DObject(Div720);
-                const Label721 = new CSS2DObject(Div721);
-                const Label722 = new CSS2DObject(Div722);
-                const Label723 = new CSS2DObject(Div723);
-                const LabelArr = [Label701, Label706, Label707, Label708, Label709, Label711, Label713, Label716, Label717, Label720, Label721, Label722, Label723]
-
-                Label701.position.set(-0.2, 0.3, 1.1);
-                Label706.position.set(-1.2, 0.3, 0.5);
-                Label707.position.set(-1.2, 0.3, 0);
-                Label708.position.set(-0.7, 0.3, -0.6);
-                Label709.position.set(-0.9, 0.3, -0.9);
-                Label711.position.set(-0.6, 0.3, -0.9);
-                Label713.position.set(-0.3, 0.3, -0.9);
-                Label716.position.set(-0.3, 0.3, -0.6);
-                Label717.position.set(0.3, 0.3, -0.9);
-                Label720.position.set(0.2, 0.3, -0.6);
-                Label721.position.set(1.1, 0.3, -0.4);
-                Label722.position.set(1.1, 0.3, 0);
-                Label723.position.set(1.1, 0.3, 0.5);
-
-                let labelNum = 0
-                LabelArr.forEach((label) => {
-               
+                roomArr.forEach(((item, index) => {
+                    // 房間編號設定
+                    item.el.textContent = roomAll[index];
+                    item.el.className = 'label';
+                    var label = new CSS2DObject(item.el);
+                    label.position.set(item.x, item.y, item.z);
                     label.center.set(0, 0, 0);
-                    root2[0].children[labelNum++].add(label);
+                    root2[0].children[(index + 1)].add(label);
                     label.layers.set(0);
-                })
-                // 以下為小地圖ping相關
-                const mini701 = document.getElementById('mini701')
-                const mini706 = document.getElementById('mini706')  
-                const mini707 = document.getElementById('mini707') 
-                const mini708 = document.getElementById('mini708') 
-                const mini709 = document.getElementById('mini709') 
-                const mini711 = document.getElementById('mini711') 
-                const mini713 = document.getElementById('mini713') 
-                const mini716 = document.getElementById('mini716') 
-                const mini717 = document.getElementById('mini717') 
-                const mini720 = document.getElementById('mini720') 
-                const mini721 = document.getElementById('mini721') 
-                const mini722 = document.getElementById('mini722') 
-                const mini723 = document.getElementById('mini723') 
-               
-                const ping701 = document.createElement('div')
-                const ping706 = document.createElement('div')
-                const ping707 = document.createElement('div')
-                const ping708 = document.createElement('div')
-                const ping709 = document.createElement('div')
-                const ping711 = document.createElement('div')
-                const ping713 = document.createElement('div')
-                const ping716 = document.createElement('div')
-                const ping717 = document.createElement('div')
-                const ping720 = document.createElement('div')
-                const ping721 = document.createElement('div')
-                const ping722 = document.createElement('div')
-                const ping723 = document.createElement('div')
-                const pingArr = [ping701, ping706, ping707, ping708, ping709, ping711, ping713, ping716, ping717, ping720, ping721, ping722, ping723]
-           
-                let pingNum = -1;
-                function pingAdd() {
-                    pingNum = pingNum + 1;
-                    return pingAll[pingNum];
-                }
-
-                pingArr.forEach(((item) => {
-                    item.id = `${pingAdd()}`;
-                }))
-               
-                const mark701 = new CSS2DObject(ping701)
-                const mark706 = new CSS2DObject(ping706)
-                const mark707 = new CSS2DObject(ping707)
-                const mark708 = new CSS2DObject(ping708)
-                const mark709 = new CSS2DObject(ping709)
-                const mark711 = new CSS2DObject(ping711)
-                const mark713 = new CSS2DObject(ping713)
-                const mark716 = new CSS2DObject(ping716)
-                const mark717 = new CSS2DObject(ping717)
-                const mark720 = new CSS2DObject(ping720)
-                const mark721 = new CSS2DObject(ping721)
-                const mark722 = new CSS2DObject(ping722)
-                const mark723 = new CSS2DObject(ping723)
-                const markArr = [mark701, mark706, mark707 ,mark708, mark709, mark711, mark713, mark716, mark717, mark720, mark721, mark722, mark723]
-
-                mark701.position.set(-0.2, 0.5, 1.1);
-                mark706.position.set(-1.2, 0.5, 0.5);
-                mark707.position.set(-1.2, 0.5, 0);
-                mark708.position.set(-0.7, 0.5, -0.6);
-                mark709.position.set(-0.9, 0.5, -0.9);
-                mark711.position.set(-0.6, 0.5, -0.9);
-                mark713.position.set(-0.3, 0.5, -0.9);
-                mark716.position.set(-0.3, 0.5, -0.6);
-                mark717.position.set(0.3, 0.5, -0.9);
-                mark720.position.set(0.2, 0.5, -0.6);
-                mark721.position.set(1.1, 0.5, -0.4);
-                mark722.position.set(1.1, 0.5, 0);
-                mark723.position.set(1.1, 0.5, 0.5);
-
-                let markNum = 0
-                markArr.forEach((mark) => {
+                    
+                    // 現在位置標示設定
+                    item.pin.classList.add('pin')
+                    item.pin.innerHTML = '<iconify-icon icon="mdi:rabbit-variant"></iconify-icon>'
+                    var mark = new CSS2DObject(item.pin);
+                    mark.position.set(item.x, item.y + 0.2, item.z);
                     mark.center.set(0, 0, 0);
-                    root2[0].children[markNum++].add(mark);
+                    root2[0].children[(index + 1)].add(mark);
                     mark.layers.set(0);
-                })
-           
-                mini701.addEventListener('click', () => {
-                    ping701.classList.add('show')
-                })
-                mini706.addEventListener('click', () => {
-                    ping706.classList.add('show')
-                })
-                mini707.addEventListener('click', () => {
-                    ping707.classList.add('show')
-                })
-                mini708.addEventListener('click', () => {
-                    ping708.classList.add('show')
-                })
-                mini709.addEventListener('click', () => {
-                    ping709.classList.add('show')
-                })
-                mini711.addEventListener('click', () => {
-                    ping711.classList.add('show')
-                })
-                mini713.addEventListener('click', () => {
-                    ping713.classList.add('show')
-                })
-                mini716.addEventListener('click', () => {
-                    ping716.classList.add('show')
-                })
-                mini717.addEventListener('click', () => {
-                    ping717.classList.add('show')
-                })
-                mini720.addEventListener('click', () => {
-                    ping720.classList.add('show')
-                })
-                mini721.addEventListener('click', () => {
-                    ping721.classList.add('show')
-                })
-                mini722.addEventListener('click', () => {
-                    ping722.classList.add('show')
-                })
-                mini723.addEventListener('click', () => {
-                    ping723.classList.add('show')
-                })
-
+                    item.mini.addEventListener('click', () => {
+                        item.pin.classList.add('show');
+                    })
+                }))
             },
-
         )
-       
 
         // POS上面有宣告這裡的用途主要為將three.js綁在固定區域 label的為標籤的  
         pos2.appendChild(renderer2.domElement);
@@ -995,22 +982,13 @@
             if (roomAll.includes(intersects[0]?.object?.material?.name ?? '')) {
                 location.href = `room.html#r${intersects[0].object.material.name}`;
                 infoModal.close();
-                ping701.classList.remove('show')
-                ping706.classList.remove('show')
-                ping707.classList.remove('show')
-                ping708.classList.remove('show')
-                ping709.classList.remove('show')
-                ping711.classList.remove('show')
-                ping713.classList.remove('show')
-                ping716.classList.remove('show')
-                ping717.classList.remove('show')
-                ping720.classList.remove('show')
-                ping721.classList.remove('show')
-                ping722.classList.remove('show')
-                ping723.classList.remove('show')
-              
+                const pins = document.querySelectorAll('.pin')
+                pins.forEach((item) => {
+                    item.classList.remove('show');
+                });
             }
         }
+
         function pointermove(event) {
             // 將滑鼠位置設定為裝置座標。x 和 y 方向取的範圍是 (-1 to +1)
             pointer.x = (event.layerX / pos2.offsetWidth) * 2 - 1;
@@ -1104,22 +1082,13 @@
 
         close.addEventListener("click", function () {
             infoModal.close();
-            ping701.classList.remove('show')
-                ping706.classList.remove('show')
-                ping707.classList.remove('show')
-                ping708.classList.remove('show')
-                ping709.classList.remove('show')
-                ping711.classList.remove('show')
-                ping713.classList.remove('show')
-                ping716.classList.remove('show')
-                ping717.classList.remove('show')
-                ping720.classList.remove('show')
-                ping721.classList.remove('show')
-                ping722.classList.remove('show')
-                ping723.classList.remove('show')
+            const pins = document.querySelectorAll('.pin')
+            pins.forEach((item) => {
+                item.classList.remove('show');
+            });
         })
 
-        
+
     </script>
 </body>
 

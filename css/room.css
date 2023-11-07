@@ -10,7 +10,7 @@ body,
 html {
     margin: 0;
     padding: 0;
-    font-family: 'Nunito', 'jf-openhuninn', sans-serif,'Microsoft JhengHei','PingFang';
+    font-family: 'Nunito', 'jf-openhuninn', sans-serif, 'Microsoft JhengHei', 'PingFang';
     font-size: 17px;
     color: white;
 }
@@ -405,7 +405,10 @@ main {
 }
 
 @media(max-width: 500px) {
-    #r720 h3, #r716 h3, #r701 h3 {
+
+    #r720 h3,
+    #r716 h3,
+    #r701 h3 {
         font-size: 20px;
     }
 
@@ -475,11 +478,13 @@ main {
         display: flex;
     }
 }
+
 @media (max-width : 1099px) {
-    #small{
+    #small {
         width: 500px !important;
         height: 300px !important;
     }
+
     dialog {
         border: none;
         box-shadow: 0 2px 6px #ccc;
@@ -488,8 +493,9 @@ main {
         width: 600px !important;
         flex-wrap: wrap;
     }
-    
+
 }
+
 #small {
     height: 600px;
     width: 1000px;
@@ -606,14 +612,27 @@ footer .line {
     }
 }
 
+.label {
+    color: #7C7877;
+    font-family: 'Nunito', 'jf-openhuninn', 'sans-serif', 'Microsoft JhengHei', 'PingFang';
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+}
+
+.pin {
+    color: rgb(231, 75, 63);
+    font-size: 50px;
+    display: none;
+}
+
 .hide {
     display: none !important;
 }
-#ping701, #ping706, #ping707, #ping708, #ping709, #ping711, #ping713, #ping716, #ping717, #ping720, #ping721, #ping722, #ping723 {
-    content: url('https://api.iconify.design/teenyicons/pin-solid.svg');
-    width: 40px;
-    display: none;
-}
-.show{
+
+.show {
     display: block !important;
 }
